@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,11 @@ export class LoginComponent implements OnInit {
   loginMode: boolean = false;
   authForm: FormGroup = new FormGroup({});
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.authForm = new FormGroup({
-      "email": new FormControl("", [Validators.required, Validators.email]),
+      "user": new FormControl("", [Validators.required]),
       "password": new FormControl("", [Validators.required, Validators.minLength(6)])
     })
   }
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
     if (!this.authForm.valid) {
       return;
     } 
-    //codice invio dati da verificare al service
+    this.authService.login(this.authForm.controls.user.value, this.authForm.controls.password.value);
+    console.log("inviato")
   }
 
 }
