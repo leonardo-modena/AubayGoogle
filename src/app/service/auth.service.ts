@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { User } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  user!: User;
+  user = new Subject<User | null>();
   refreshTokenInterval!: any;
 
   constructor(private httpService: HttpClient) {}
@@ -18,25 +19,32 @@ export class AuthService {
         user: username,
         password: password,
       })
-      .subscribe((data) => {
-        this.user.username = username;
-        this.user = data;
+      .subscribe((confirmedUser) => {
+        let newUser: User = confirmedUser;
+        newUser.username = username;
+        this.user.next(newUser);
+        this.refreshLogin();
       });
-      this.refreshLogin();
   }
 
-  logout(){
-    
+  logout(): void {
+    clearInterval(this.refreshTokenInterval);
+    this.user.next(null);
   }
 
-  refreshLogin(): void{
-    if (!(this.user.tokenExpireIn <= 0)){
-      this.refreshTokenInterval = setInterval(() => {
-        console.log("timer partito")
-        this.httpService.post('http://localhost:3000//auth/refreshToken', {
-          refreshToken: this.user.refreshToken,
-        })
-      }, this.user.refreshTokenExpireIn);
-    }
+  refreshLogin(): void {
+    this.user.subscribe((user) => {
+      if (user) {
+        if (!(user.refreshTokenExpireIn <= 0)) {
+          this.refreshTokenInterval = setInterval(() => {
+            console.log('timer partito');
+            this.httpService.post('http://localhost:3000//auth/refreshToken', {
+              refreshToken: user.refreshToken,
+            });
+          }, user.tokenExpireIn);
+        } else this.logout();
+
+      }
+    });
   }
 }
