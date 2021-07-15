@@ -6,7 +6,8 @@ import { SearchBarComponent } from './component/search-bar/search-bar.component'
 
 const routes: Routes = [
   { path: "", component: SearchBarComponent },
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  { path: 'search', component: SearchBarComponent}
 
 ];
 
