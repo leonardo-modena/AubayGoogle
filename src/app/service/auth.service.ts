@@ -41,10 +41,10 @@ export class AuthService {
         if (!(user.refreshTokenExpireIn <= 0)) {
           this.refreshTokenInterval = setInterval(() => {
             console.log('timer partito');
-            this.httpService.post('http://localhost:3000//auth/refreshToken', {
+            this.httpService.post('http://localhost:3000/auth/refreshToken', {
               refreshToken: user.refreshToken,
             });
-          }, user.tokenExpireIn);
+          }, (user.tokenExpireIn - Date.now()));
         } else this.logout();
       }
     });

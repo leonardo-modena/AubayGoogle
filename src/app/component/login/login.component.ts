@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { AuthService } from 'src/app/service/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+
+  authServiceSubscription!: Subscription;
+
 
   loginMode: boolean = false;
   authForm: FormGroup = new FormGroup({});
@@ -30,7 +34,7 @@ export class LoginComponent implements OnInit {
     if (!this.authForm.valid) {
       return;
     } 
-    this.authService.login(this.authForm.controls.user.value, this.authForm.controls.password.value).subscribe(
+    this.authServiceSubscription = this.authService.login(this.authForm.controls.user.value, this.authForm.controls.password.value).subscribe(
       res => {
         console.log(res);
         this.router.navigate([""])
@@ -39,6 +43,10 @@ export class LoginComponent implements OnInit {
         console.log(err)
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    this.authServiceSubscription.unsubscribe();
   }
 
 }
