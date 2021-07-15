@@ -5,9 +5,10 @@ import { LoginComponent } from './component/login/login.component';
 import { SearchBarComponent } from './component/search-bar/search-bar.component';
 
 const routes: Routes = [
-  { path: "", component: SearchBarComponent },
-  { path: "login", component: LoginComponent },
-  { path: 'search', component: SearchBarComponent}
+  { path: '', component: SearchBarComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'search', component: SearchBarComponent},
+  { path: 'admin', component: AdminComponent}
 
 ];
 
