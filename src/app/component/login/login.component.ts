@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
       return;
     } 
     this.authService.login(this.authForm.controls.user.value, this.authForm.controls.password.value);
-    console.log("inviato")
   }
 
 }

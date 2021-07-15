@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReasearchConnectorService } from 'src/app/service/reasearch-connector.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor() { }
+  inputSearch!: FormGroup;
+
+  constructor(private reasearService: ReasearchConnectorService) { }
 
   ngOnInit(): void {
+    this.inputSearch = new FormGroup({
+      'searchBar': new FormControl("", Validators.required)
+    })
+  }
+
+  onSearch(){
+    this.reasearService.ricerca(this.inputSearch.controls.searchBar.value)
   }
 
 }

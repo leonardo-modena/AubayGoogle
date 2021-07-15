@@ -74,7 +74,7 @@ server.post('/auth/login', (req, res) => {
   const dateRefreshToken = Date.now() + 60000*60*9;
   res.status(200).json({access_token, tokenExpireIn: dateToken, refreshToken, refreshTokenExpireIn: dateRefreshToken});
 })
-
+this.login();
 server.post('/auth/refreshToken', (req, res) => {
 	const {refreshToken} = req.body;
 	if(refreshToken && (refreshToken in tokenList)) {
