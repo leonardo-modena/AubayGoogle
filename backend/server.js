@@ -1,5 +1,5 @@
 /**
- * @author Alessio Napolitano 
+ * @author Alessio Napolitano
  */
 
 const bodyParser = require('body-parser');
@@ -9,7 +9,7 @@ const crypto = require('crypto-js');
 
 const server = jsonServer.create();
 
-const router = jsonServer.router('./db.json');
+const router = jsonServer.router('./backend/db.json');
 
 const tokenList = {};
 
@@ -74,7 +74,7 @@ server.post('/auth/login', (req, res) => {
   const dateRefreshToken = Date.now() + 60000*60*9;
   res.status(200).json({access_token, tokenExpireIn: dateToken, refreshToken, refreshTokenExpireIn: dateRefreshToken});
 })
-this.login();
+
 server.post('/auth/refreshToken', (req, res) => {
 	const {refreshToken} = req.body;
 	if(refreshToken && (refreshToken in tokenList)) {
@@ -86,11 +86,11 @@ server.post('/auth/refreshToken', (req, res) => {
 				access_token: token,
 				tokenExpireIn: dateToken
 			}
-			res.status(200).json(response);   
+			res.status(200).json(response);
 		} else {
 			const message = 'Token non valido/scaduto';
 			res.status(401).json({status, message});
-		}     
+		}
     } else {
         res.status(400).send('Richiesta non valida')
     }
