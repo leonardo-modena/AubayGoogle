@@ -10,6 +10,7 @@ import { ResearchItemComponent } from './component/research-container/research-i
 import { LoaderComponent } from './component/loader/loader.component';
 import { LoginComponent } from './component/login/login.component';
 import { AdminComponent } from './component/admin/admin.component';
+import { HeaderComponent } from './component/header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AdminComponent } from './component/admin/admin.component';
     ResearchItemComponent,
     LoaderComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
