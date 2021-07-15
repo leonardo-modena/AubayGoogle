@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { User } from '../model/user.model';
 
 @Injectable({
@@ -12,19 +13,21 @@ export class AuthService {
 
   constructor(private httpService: HttpClient) {}
 
-  login(username: string, password: string): void {
+  login(username: string, password: string): Observable<User> {
     clearInterval(this.refreshTokenInterval);
-    this.httpService
+    return this.httpService
       .post<User>('http://localhost:3000/auth/login', {
         user: username,
         password: password,
       })
-      .subscribe((confirmedUser) => {
-        let newUser: User = confirmedUser;
-        newUser.username = username;
-        this.user.next(newUser);
-        this.refreshLogin();
-      });
+      .pipe(
+        tap((confirmedUser) => {
+          let newUser: User = confirmedUser;
+          newUser.username = username;
+          this.user.next(newUser);
+          this.refreshLogin();
+        })
+      );
   }
 
   logout(): void {
@@ -43,7 +46,6 @@ export class AuthService {
             });
           }, user.tokenExpireIn);
         } else this.logout();
-
       }
     });
   }
