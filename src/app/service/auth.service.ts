@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { interval, Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../model/user.model';
 
@@ -14,7 +14,6 @@ export class AuthService {
   constructor(private httpService: HttpClient) {}
 
   login(username: string, password: string): Observable<User> {
-    clearInterval(this.refreshTokenInterval);
     return this.httpService
       .post<User>('http://localhost:3000/auth/login', {
         user: username,
@@ -38,15 +37,21 @@ export class AuthService {
   refreshLogin(): void {
     this.user.subscribe((user) => {
       if (user) {
-        if (!(user.refreshTokenExpireIn <= 0)) {
-          this.refreshTokenInterval = setInterval(() => {
-            console.log('timer partito');
-            this.httpService.post('http://localhost:3000/auth/refreshToken', {
-              refreshToken: user.refreshToken,
-            });
-          }, (user.tokenExpireIn - Date.now()));
+        if (! (((user.refreshTokenExpireIn - Date.now())) <= 0) ) {
+          this.IntervalRefresh((user.tokenExpireIn - Date.now()), user.refreshToken)
         } else this.logout();
       }
     });
+  }
+
+  IntervalRefresh(interval: number, refreshToken: string){
+    this.refreshTokenInterval = setInterval(() => {
+      this.httpService.post('http://localhost:3000/auth/refreshToken', {
+        refreshToken: refreshToken
+      }).subscribe((res) => {
+        console.log(res);
+      });
+    }, 2000);
+
   }
 }
