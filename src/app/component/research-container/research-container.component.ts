@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Research} from "../../model/research.model";
 
 @Component({
   selector: 'app-research-container',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./research-container.component.css']
 })
 export class ResearchContainerComponent implements OnInit {
+  @Input() research!: Research[];
 
   constructor() { }
 
