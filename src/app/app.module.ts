@@ -16,6 +16,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { HeaderComponent } from './component/header/header.component';
 import { AuthService } from './service/auth.service';
 import { InsertFormComponent } from './component/admin/insert-form/insert-form.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { InsertFormComponent } from './component/admin/insert-form/insert-form.c
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

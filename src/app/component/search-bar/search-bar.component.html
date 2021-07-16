@@ -2,7 +2,7 @@
   <div class="row text-center">
     <h1 class="mt-5 mb-5">AubayGoogle</h1>
   </div>
-<!--  <br/>-->
+  <!--  <br/>-->
   <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-8">
       <form class="card card-sm" [formGroup]="inputSearch">
@@ -16,20 +16,23 @@
           </div>
         </div>
       </form>
-      <app-research-container [research]="research"></app-research-container>
+      <!--      <app-research-container [research]="research"></app-research-container>-->
     </div>
   </div>
+  <!--  <pagination-controls  class="text-center" (pageChange)="p = $event"></pagination-controls>-->
 </div>
 
 
-<!--<div class="container">-->
-<!--  <div class="row">-->
-<!--    <ul class="list-group">-->
-<!--      <li class="list-group-item" *ngFor="let research of research">-->
-<!--        <a [href]="research.url" target="_blank">{{ research.url }}</a>-->
-<!--        <div>{{ research.titolo }}</div>-->
-<!--        <p>{{ research.descrizione }}</p>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="container">
+  <div class="row">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let research of research | paginate: {itemsPerPage: 1, currentPage: p }">
+        <a [href]="research.url" target="_blank">{{ research.url }}</a>
+        <div>{{ research.titolo }}</div>
+        <p>{{ research.descrizione }}</p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    <pagination-controls class="text-center" (pageChange)="p = $event" [hidden]="research.length === 0"></pagination-controls>

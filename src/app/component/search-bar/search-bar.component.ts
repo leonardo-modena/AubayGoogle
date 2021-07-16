@@ -12,6 +12,9 @@ export class SearchBarComponent implements OnInit {
   research!: Research[];
   inputSearch!: FormGroup;
 
+  // totalLength: any;
+  p: number = 1;
+
   constructor(private researchService: ResearchConnectorService) {
   }
 
@@ -25,6 +28,7 @@ export class SearchBarComponent implements OnInit {
     this.researchService.ricerca(this.inputSearch.controls.searchBar.value)
       .subscribe((res: Research[]) => {
         this.research = res;
+        // this.totalLength = res.length;
       });
   }
 
