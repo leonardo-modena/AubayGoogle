@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ResearchConnectorService} from 'src/app/service/research-connector.service';
+import {Research} from "../../model/research.model";
 
 @Component({
   selector: 'app-search-bar',
@@ -8,7 +9,7 @@ import {ResearchConnectorService} from 'src/app/service/research-connector.servi
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-
+  research!: Research[];
   inputSearch!: FormGroup;
 
   constructor(private researchService: ResearchConnectorService) {
@@ -21,7 +22,11 @@ export class SearchBarComponent implements OnInit {
   }
 
   onSearch() {
-    this.researchService.ricerca(this.inputSearch.controls.searchBar.value);
+    this.researchService.ricerca(this.inputSearch.controls.searchBar.value)
+      .subscribe((res: Research[]) => {
+        this.research = res;
+      });
   }
+
 
 }
