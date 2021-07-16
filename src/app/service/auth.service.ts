@@ -24,6 +24,7 @@ export class AuthService {
           let newUser: AuthUser = confirmedUser;
           newUser.username = username;
           this.user.next(newUser);
+          localStorage.setItem("user", JSON.stringify(newUser))
           this.refreshLogin();
         })
       );
@@ -32,6 +33,7 @@ export class AuthService {
   logout(): void {
     clearInterval(this.refreshTokenInterval);
     this.user.next(null);
+    localStorage.removeItem("user")
   }
 
   refreshLogin(): void {
@@ -40,7 +42,9 @@ export class AuthService {
         if (! (((user.refreshTokenExpireIn - Date.now())) <= 0) ) {
           this.IntervalRefresh((user.tokenExpireIn - Date.now()), user.refreshToken)
           console.log("started")
-        } else this.logout();
+        } else{
+          this.logout();
+        }
       }
     });
   }
@@ -54,5 +58,14 @@ export class AuthService {
       });
     }, interval);
 
+  }
+
+  autoLogin(): void{
+    let UserSaved = localStorage.getItem("user");
+
+    if (!UserSaved) {
+      return;
+    }
+    this.user.next(JSON.parse(UserSaved))
   }
 }
