@@ -15,6 +15,7 @@ import { LoginComponent } from './component/login/login.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { HeaderComponent } from './component/header/header.component';
 import { AuthService } from './service/auth.service';
+import { InsertFormComponent } from './component/admin/insert-form/insert-form.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthService } from './service/auth.service';
     LoaderComponent,
     LoginComponent,
     AdminComponent,
-    HeaderComponent
+    HeaderComponent,
+    InsertFormComponent
   ],
   imports: [
     BrowserModule,
