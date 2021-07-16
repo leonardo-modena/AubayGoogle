@@ -44,14 +44,14 @@ export class AuthService {
     });
   }
 
-  IntervalRefresh(interval: number, refreshToken: string){
+  IntervalRefresh(interval: number, refreshToken: string): void{
     this.refreshTokenInterval = setInterval(() => {
       this.httpService.post('http://localhost:3000/auth/refreshToken', {
         refreshToken: refreshToken
       }).subscribe((res) => {
         console.log(res);
       });
-    }, 2000);
+    }, interval);
 
   }
 }
