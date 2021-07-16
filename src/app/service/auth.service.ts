@@ -1,27 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { interval, Observable, Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { User } from '../model/user.model';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AuthUser } from '../model/auth-user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  user = new Subject<User | null>();
+  user = new BehaviorSubject<AuthUser | null>(null);
   refreshTokenInterval!: any;
 
   constructor(private httpService: HttpClient) {}
 
-  login(username: string, password: string): Observable<User> {
+  login(username: string, password: string): Observable<void> {
     return this.httpService
-      .post<User>('http://localhost:3000/auth/login', {
+      .post<AuthUser>('http://localhost:3000/auth/login', {
         user: username,
         password: password,
       })
       .pipe(
-        tap((confirmedUser) => {
-          let newUser: User = confirmedUser;
+        map((confirmedUser) => {
+          let newUser: AuthUser = confirmedUser;
           newUser.username = username;
           this.user.next(newUser);
           this.refreshLogin();
@@ -39,6 +39,7 @@ export class AuthService {
       if (user) {
         if (! (((user.refreshTokenExpireIn - Date.now())) <= 0) ) {
           this.IntervalRefresh((user.tokenExpireIn - Date.now()), user.refreshToken)
+          console.log("started")
         } else this.logout();
       }
     });

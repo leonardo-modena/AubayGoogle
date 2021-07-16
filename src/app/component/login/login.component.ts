@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     } 
     this.authServiceSubscription = this.authService.login(this.authForm.controls.user.value, this.authForm.controls.password.value).subscribe(
       res => {
-        console.log(res);
-        this.router.navigate([""])
+        this.router.navigate(["/admin"])
       },
       err => {
         console.log(err)

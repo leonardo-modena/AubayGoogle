@@ -1,4 +1,4 @@
-export interface User{
+export interface AuthUser{
     username: string,
     acces_token: string,
     refreshToken: string,

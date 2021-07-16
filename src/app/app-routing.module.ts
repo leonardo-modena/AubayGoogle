@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'search', component: SearchBarComponent},
   { 
     path: 'admin', component: AdminComponent,
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   }
 
 ];
