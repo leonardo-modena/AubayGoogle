@@ -2,11 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Research} from "../../model/research.model";
 
 @Component({
-  selector: 'app-research-container',
-  templateUrl: './research-container.component.html',
-  styleUrls: ['./research-container.component.css']
+  selector: 'app-research-item',
+  templateUrl: './research-item.component.html',
+  styleUrls: ['./research-item.component.css']
 })
-export class ResearchContainerComponent implements OnInit {
+export class ResearchItemComponent implements OnInit {
   @Input() onResearch!: Research[];
 
   page: number = 1;
