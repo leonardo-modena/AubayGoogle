@@ -35,14 +35,6 @@ export class ResearchConnectorService {
         'http://localhost:3000/ricerca',
         {nuovaRicerca},
         {headers: {Authorization: `Bearer ${token}`}}
-      )
-      .pipe(
-        map(
-          (res) => {
-            console.log(res);
-          },
-          (errore: string) => console.log(errore)
-        )
       );
   }
 }

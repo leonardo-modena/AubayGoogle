@@ -32,3 +32,5 @@
   </div>
   <button (click)="onSubmit()" type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>
+
+<app-error *ngIf="errorMessage" [error]="errorMessage"></app-error>

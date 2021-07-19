@@ -9,6 +9,8 @@ import { ResearchConnectorService } from 'src/app/service/research-connector.ser
   styleUrls: ['./insert-form.component.css'],
 })
 export class InsertFormComponent implements OnInit {
+  errorMessage!: string | null;
+  
   newResearchForm!: FormGroup;
 
   constructor(private researchService: ResearchConnectorService) {}
@@ -31,7 +33,12 @@ export class InsertFormComponent implements OnInit {
         chiavi: this.newResearchForm.controls.chiavi.value,
         url: this.newResearchForm.controls.url.value,
       })
-      ?.subscribe();
+      ?.subscribe(
+        res => {},
+        err => {
+          this.errorMessage = err;
+        }
+      );
     this.newResearchForm.reset();
   }
 }
