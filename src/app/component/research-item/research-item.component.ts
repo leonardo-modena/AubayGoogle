@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Research} from "../../model/research.model";
 
 @Component({
   selector: 'app-research-item',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./research-item.component.css']
 })
 export class ResearchItemComponent implements OnInit {
+  @Input() onResearch!: Research[];
+
+  page: number = 1;
 
   constructor() { }
 
