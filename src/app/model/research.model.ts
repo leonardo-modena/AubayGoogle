@@ -1,5 +1,5 @@
 export interface Research {
-  id: number;
+  id?: number;
   titolo: string;
   descrizione: string;
   chiavi: string;
