@@ -1,4 +1,5 @@
-<form [formGroup]="newResearchForm">
+<app-loader *ngIf="loading"></app-loader>
+<form [formGroup]="newResearchForm" *ngIf="!loading">
   <div class="form-group">
     <label for="title">Titolo</label>
     <input
@@ -30,7 +31,7 @@
     <label for="url">Url</label>
     <input type="text" class="form-control" id="url" formControlName="url" />
   </div>
-  <button (click)="onSubmit()" type="submit" class="btn btn-primary mt-3">Submit</button>
+  <button (click)="onSubmit()" [ngClass]="{'disabled' : !newResearchForm.valid}" type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>
 
 <app-error *ngIf="errorMessage" [error]="errorMessage"></app-error>

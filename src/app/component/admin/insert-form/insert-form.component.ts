@@ -10,6 +10,8 @@ import { ResearchConnectorService } from 'src/app/service/research-connector.ser
 })
 export class InsertFormComponent implements OnInit {
   errorMessage!: string | null;
+
+  loading: boolean = false;
   
   newResearchForm!: FormGroup;
 
@@ -26,6 +28,8 @@ export class InsertFormComponent implements OnInit {
 
   onSubmit(): void {
     if (!this.newResearchForm.valid) return;
+    this.loading = true;
+
     this.researchService
       .newResearch({
         titolo: this.newResearchForm.controls.titolo.value,
@@ -34,8 +38,11 @@ export class InsertFormComponent implements OnInit {
         url: this.newResearchForm.controls.url.value,
       })
       ?.subscribe(
-        res => {},
+        res => {
+          this.loading = false;
+        },
         err => {
+          this.loading = false;
           this.errorMessage = err;
         }
       );
