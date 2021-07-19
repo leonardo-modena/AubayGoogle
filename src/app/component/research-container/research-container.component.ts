@@ -7,11 +7,9 @@ import {Research} from "../../model/research.model";
   styleUrls: ['./research-container.component.css']
 })
 export class ResearchContainerComponent implements OnInit {
-  // @Input() research!: Research[];
+  @Input() onResearch!: Research[];
 
-
-  // p: number = 1;
-  // totalLength: any;
+  page: number = 1;
 
   constructor() { }
 

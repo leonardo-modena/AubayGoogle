@@ -16,23 +16,9 @@
           </div>
         </div>
       </form>
-      <!--      <app-research-container [research]="research"></app-research-container>-->
+      <app-research-container [onResearch]="research"></app-research-container>
     </div>
   </div>
-  <!--  <pagination-controls  class="text-center" (pageChange)="p = $event"></pagination-controls>-->
 </div>
 
 
-<div class="container">
-  <div class="row">
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let research of research | paginate: {itemsPerPage: 1, currentPage: p }">
-        <a [href]="research.url" target="_blank">{{ research.url }}</a>
-        <div>{{ research.titolo }}</div>
-        <p>{{ research.descrizione }}</p>
-      </li>
-    </ul>
-  </div>
-</div>
-
-    <pagination-controls class="text-center" (pageChange)="p = $event" [hidden]="research.length === 0"></pagination-controls>

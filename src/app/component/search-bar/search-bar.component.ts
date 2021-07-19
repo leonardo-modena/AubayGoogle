@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ResearchConnectorService} from 'src/app/service/research-connector.service';
 import {Research} from "../../model/research.model";
+import {ResearchConnectorService} from "../../service/research-connector.service";
 
 @Component({
   selector: 'app-search-bar',
@@ -11,9 +11,6 @@ import {Research} from "../../model/research.model";
 export class SearchBarComponent implements OnInit {
   research!: Research[];
   inputSearch!: FormGroup;
-
-  // totalLength: any;
-  p: number = 1;
 
   constructor(private researchService: ResearchConnectorService) {
   }
@@ -25,12 +22,13 @@ export class SearchBarComponent implements OnInit {
   }
 
   onSearch() {
-    this.researchService.ricerca(this.inputSearch.controls.searchBar.value)
-      .subscribe((res: Research[]) => {
-        this.research = res;
-        // this.totalLength = res.length;
-      });
+    if (this.inputSearch.valid) {
+      this.researchService.research(this.inputSearch.controls.searchBar.value)
+        .subscribe((res: Research[]) => {
+          this.research = res;
+        });
+    } else {
+      alert('inserire parola');
+    }
   }
-
-
 }
