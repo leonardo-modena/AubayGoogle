@@ -11,12 +11,24 @@ import {map} from 'rxjs/operators';
 export class ResearchConnectorService {
   constructor(
     private httpService: HttpClient,
-  ) { }
+  ) {
+  }
 
   research(chiave: string): Observable<Research[]> {
     return this.httpService.get<Research[]>(
-      `http://localhost:3000/ricerca?q=${chiave}&_page=1`
-    );
+      `http://localhost:3000/ricerca?q=${chiave}&_limit=1&_page=1`
+    ).pipe(map((response) => {
+      console.log(response);
+      response.forEach((item: any) => {
+        if (item.nuovaRicerca) {
+          item["titolo"] = item.nuovaRicerca.titolo;
+          item["descrizione"] = item.nuovaRicerca.descrizione;
+          item["chiavi"] = item.nuovaRicerca.chiavi;
+          item["url"] = item.nuovaRicerca.url;
+        }
+      })
+      return response;
+    }));
   }
 
   newResearch(nuovaRicerca: Research) {

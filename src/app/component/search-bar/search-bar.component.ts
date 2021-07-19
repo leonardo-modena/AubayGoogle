@@ -24,7 +24,7 @@ export class SearchBarComponent implements OnInit {
   onSearch() {
     if (this.inputSearch.valid) {
       this.researchService.research(this.inputSearch.controls.searchBar.value)
-        .subscribe((res: Research[]) => {
+        .subscribe((res) => {
           this.research = res;
         });
     } else {
