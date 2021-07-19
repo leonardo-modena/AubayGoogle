@@ -15,5 +15,8 @@
             </form>  
             <a (click)="switchMode()" class="switch-text">Switch to: {{loginMode ? 'Login' : 'Sign Up' }}</a>
         </div>
+        <div class="col-sm-12">
+          <app-error [error]="errorMessage" *ngIf="errorMessage"></app-error>
+        </div>
     </div>
 </div>

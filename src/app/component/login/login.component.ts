@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   authServiceSubscription!: Subscription;
 
+  errorMessage!: string | null;
 
   loginMode: boolean = false;
   authForm: FormGroup = new FormGroup({});
@@ -36,10 +37,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     } 
     this.authServiceSubscription = this.authService.login(this.authForm.controls.user.value, this.authForm.controls.password.value).subscribe(
       res => {
+        this.errorMessage = null;
         this.router.navigate(["/admin"])
+        
       },
       err => {
-        console.log(err)
+        this.errorMessage = err;
       }
     );
   }
