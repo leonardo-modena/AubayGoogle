@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ResearchConnectorService} from "../../service/research-connector.service";
 
 @Component({
   selector: 'app-pagination',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnInit {
+  link: string[] = [];
 
-  constructor() { }
+  constructor(private researchService: ResearchConnectorService) { }
 
   ngOnInit(): void {
+    this.researchService.link.subscribe(res => {
+      if (res) {
+        this.link = res.split(',');
+      }
+      console.log(this.link);
+    });
   }
 
 }

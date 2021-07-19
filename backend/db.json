@@ -38,6 +38,33 @@
         "url": "https://docs.oracle.com/javase/7/docs/api/"
       },
       "id": 5
+    },
+    {
+      "nuovaRicerca": {
+        "titolo": "test",
+        "descrizione": "test",
+        "chiavi": "test",
+        "url": "www.test.com"
+      },
+      "id": 6
+    },
+    {
+      "nuovaRicerca": {
+        "titolo": "test2",
+        "descrizione": "test2",
+        "chiavi": "test2",
+        "url": "www.test2.com"
+      },
+      "id": 7
+    },
+    {
+      "nuovaRicerca": {
+        "titolo": "test",
+        "descrizione": "test",
+        "chiavi": "test",
+        "url": "www.test.it"
+      },
+      "id": 8
     }
   ]
 }
