@@ -38,23 +38,32 @@ export class ResearchConnectorService {
       );
   }
 
-  getResearchByUrl(url: string) {
+  getResearchByUrl(url: string): Observable<Research[]> {
     return this.httpService.get<Research[]>(url);
   }
 
   newResearch(nuovaRicerca: Research) {
+    return this.httpService.post<Research>(
+      'http://localhost:3000/ricerca',
+      {...nuovaRicerca},
+      {headers: {Authorization: `Bearer ${this.getToken()}`}}
+    );
+  }
+
+  deleteResearch(researchId: number[] | number) {
+    return this.httpService.delete<any>(
+      `http://localhost:3000/ricerca/${researchId}`,
+      {headers: {Authorization: `Bearer ${this.getToken()}`}}
+    );
+  }
+
+  getToken(): string {
     let token;
     token = localStorage.getItem('user');
 
     if (token != null) {
       token = JSON.parse(token);
-      token = token.access_token;
-    } else return;
-
-    return this.httpService.post<Research>(
-      'http://localhost:3000/ricerca',
-      {...nuovaRicerca},
-      {headers: {Authorization: `Bearer ${token}`}}
-    );
+      return token = token.access_token;
+    } else return "";
   }
 }

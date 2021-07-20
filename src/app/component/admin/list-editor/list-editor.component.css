@@ -12,6 +12,10 @@
     cursor: pointer;
 }
 
+.icon-disabled{
+    opacity: 0;
+}
+
 .all-research-list{
     overflow: scroll;
     height: 302px;
