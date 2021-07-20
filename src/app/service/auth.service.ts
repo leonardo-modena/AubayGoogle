@@ -42,7 +42,7 @@ export class AuthService {
       if (user) {
         if (!(user.refreshTokenExpireIn - Date.now() <= 0)) {
           this.IntervalRefresh(
-            user.tokenExpireIn - Date.now(),
+            (user.tokenExpireIn - Date.now()),
             user.refreshToken
           );
           console.log('started');
@@ -50,7 +50,7 @@ export class AuthService {
           this.logout();
         }
       }
-    });
+    }).unsubscribe();
   }
 
   IntervalRefresh(interval: number, refreshToken: string): void {

@@ -20,6 +20,7 @@ import { ErrorComponent } from './component/error/error.component';
 
 import { ErrorInterceptor } from './interceptor/error.interceptor';
 import { PaginationComponent } from './component/pagination/pagination.component';
+import { ListEditorComponent } from './component/admin/list-editor/list-editor.component';
 
 
 
@@ -35,6 +36,7 @@ import { PaginationComponent } from './component/pagination/pagination.component
     InsertFormComponent,
     ErrorComponent,
     PaginationComponent,
+    ListEditorComponent,
   ],
   imports: [
     BrowserModule,
