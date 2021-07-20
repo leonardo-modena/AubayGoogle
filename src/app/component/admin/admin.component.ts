@@ -21,7 +21,6 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.authService.user.subscribe((actualUser: AuthUser | null) => {
       this.loggedUser = actualUser
       this.username = actualUser?.username
-      console.log(this.loggedUser)
     })
   }
 

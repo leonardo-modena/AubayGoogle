@@ -1,6 +1,6 @@
 export interface AuthUser{
     username: string,
-    acces_token: string,
+    access_token: string,
     refreshToken: string,
     refreshTokenExpireIn: number,
     tokenExpireIn: number,

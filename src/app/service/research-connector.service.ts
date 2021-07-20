@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Research } from '../model/research.model';
 import { map, tap } from 'rxjs/operators';
 
@@ -34,7 +34,7 @@ export class ResearchConnectorService {
           //   }
           // });
 
-          this.link.next(response.headers.get("Link"))
+          this.link.next(response.headers.get('Link'));
 
           return resData;
         })
@@ -48,7 +48,6 @@ export class ResearchConnectorService {
     if (token != null) {
       token = JSON.parse(token);
       token = token.access_token;
-      console.log(token);
     } else return;
 
     return this.httpService.post<Research>(
