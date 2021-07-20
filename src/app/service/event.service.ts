@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import { Research } from '../model/research.model';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Research } from '../model/research.model';
 export class EventService {
 
   newResearch = new Subject<string>();
-  newLink = new Subject<string>();
+  newLink = new  BehaviorSubject<string>('');
 
   constructor() { }
 

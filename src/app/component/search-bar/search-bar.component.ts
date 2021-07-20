@@ -22,7 +22,14 @@ export class SearchBarComponent implements OnInit {
     });
     this.eventService.newLink
       .subscribe((newLink) => {
-        console.log(newLink);
+        if (newLink) {
+          this.researchService.getResearchByUrl(newLink)
+            .subscribe(resData => {
+              console.log(newLink);
+              this.research = resData;
+            })
+        }
+        // console.log(newLink);
       })
   }
 
