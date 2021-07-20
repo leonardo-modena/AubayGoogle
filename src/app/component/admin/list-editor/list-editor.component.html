@@ -5,15 +5,22 @@
           <span>Ricerche Totali</span>
         </div>
         <div class="col-sm-6 col-6">
-            <a type="button" class="option-button">...</a>
+            <a type="button" class="option-button flex-end">...</a>
         </div>
-        <div class="col-sm-12 mb-2">
+        <div class="col-sm-12 mb-2 delete-button" (click)="onDelete()">
             <i class="bi bi-trash"></i>
         </div>
       </div>
       <div class="list-group all-research-list">
         <button type="button" class="list-group-item list-group-item-action" *ngFor="let research of researchList">
-          <p>{{research.id}} - {{research.titolo}}</p>
+          <form #f="ngForm">
+            <div class="row">              
+              <p class="col-sm-10">{{research.id}} - {{research.titolo}}</p>
+              <div class="form-check col-sm-2  flex-end">
+                <input class="form-check-input" type="checkbox" value="" ngModel name="research{{research.id}}">
+              </div>
+            </div>
+          </form>
         </button>
       </div>
     </div>

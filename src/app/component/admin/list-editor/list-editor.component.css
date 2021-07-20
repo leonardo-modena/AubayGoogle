@@ -1,8 +1,15 @@
 .option-button{
-    display: flex;
-    justify-content: flex-end;
     text-decoration: none;
     color: black;
+}
+
+.flex-end{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-button{
+    cursor: pointer;
 }
 
 .all-research-list{

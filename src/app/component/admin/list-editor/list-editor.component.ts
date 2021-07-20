@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Research } from 'src/app/model/research.model';
 import { EventService } from 'src/app/service/event.service';
@@ -14,11 +15,14 @@ export class ListEditorComponent implements OnInit, OnDestroy {
   eventServiceSubscription!: Subscription;
 
   researchList!: Research[];
-
+  
+  @ViewChild('f') searchForm!: NgForm;
 
   constructor(private researchService: ResearchConnectorService, private eventService: EventService) { }
 
   ngOnInit(): void {
+
+
     this.researchService.getAllResearch().subscribe( (allResearch: Research[]) => {
       this.researchList = allResearch;
     })
@@ -29,10 +33,18 @@ export class ListEditorComponent implements OnInit, OnDestroy {
         this.researchList = allResearch;
       } )
     })
+
+  }
+
+  onDelete(): void {
+    console.log(this.searchForm.controls)
+
   }
 
   ngOnDestroy(): void {
     this.eventServiceSubscription.unsubscribe()
   }
+
+
 
 }
