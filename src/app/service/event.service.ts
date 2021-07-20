@@ -8,11 +8,16 @@ import { Research } from '../model/research.model';
 export class EventService {
 
   newResearch = new Subject<string>();
+  newLink = new Subject<string>();
 
   constructor() { }
 
   emitResearch(newResearch: Research): void{
-    this.newResearch.next(`New Research Emitted title: ${newResearch.titolo}`)
+    this.newResearch.next(`New Research Emitted title: ${newResearch.titolo}`);
+  }
+
+  emitLink(link: string): void{
+    this.newLink.next(link);
   }
 
 }

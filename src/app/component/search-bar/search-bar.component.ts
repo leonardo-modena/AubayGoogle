@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Research} from "../../model/research.model";
 import {ResearchConnectorService} from "../../service/research-connector.service";
+import {EventService} from "../../service/event.service";
 
 @Component({
   selector: 'app-search-bar',
@@ -12,18 +13,22 @@ export class SearchBarComponent implements OnInit {
   research!: Research[];
   inputSearch!: FormGroup;
 
-  constructor(private researchService: ResearchConnectorService) {
+  constructor(private researchService: ResearchConnectorService, private eventService: EventService) {
   }
 
   ngOnInit(): void {
     this.inputSearch = new FormGroup({
       'searchBar': new FormControl("", Validators.required)
     });
+    this.eventService.newLink
+      .subscribe((newLink) => {
+        console.log(newLink);
+      })
   }
 
   onSearch() {
     if (this.inputSearch.valid) {
-      this.researchService.research(this.inputSearch.controls.searchBar.value)
+      this.researchService.getResearchByKey(this.inputSearch.controls.searchBar.value)
         .subscribe((res) => {
           this.research = res;
         });

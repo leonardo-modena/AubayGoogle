@@ -14,11 +14,11 @@ export class ResearchConnectorService {
 
   constructor(private httpService: HttpClient) {}
 
-  getAllResearch(): Observable<Research[]>{
+  getAllResearch(): Observable<Research[]> {
     return this.httpService.get<Research[]>('http://localhost:3000/ricerca');
   }
 
-  research(chiave: string): Observable<Research[]> {
+  getResearchByKey(chiave: string): Observable<Research[]> {
     return this.httpService
       .get<Research[]>(
         `http://localhost:3000/ricerca?q=${chiave}&_limit=1&_page=1`,
@@ -30,20 +30,16 @@ export class ResearchConnectorService {
           if (response.body) {
             resData = response.body;
           }
-          // resData.forEach((item: any) => {
-          //   if (item.nuovaRicerca) {
-          //     item['titolo'] = item.nuovaRicerca.titolo;
-          //     item['descrizione'] = item.nuovaRicerca.descrizione;
-          //     item['chiavi'] = item.nuovaRicerca.chiavi;
-          //     item['url'] = item.nuovaRicerca.url;
-          //   }
-          // });
 
           this.link.next(response.headers.get('Link'));
 
           return resData;
         })
       );
+  }
+
+  getResearchByUrl(url: string) {
+    return this.httpService.get<Research[]>(url);
   }
 
   newResearch(nuovaRicerca: Research) {
