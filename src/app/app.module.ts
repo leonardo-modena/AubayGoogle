@@ -19,6 +19,7 @@ import { ErrorComponent } from './component/error/error.component';
 
 
 import { ErrorInterceptor } from './interceptor/error.interceptor';
+import { PaginationComponent } from './component/pagination/pagination.component';
 
 
 
@@ -33,14 +34,14 @@ import { ErrorInterceptor } from './interceptor/error.interceptor';
     HeaderComponent,
     InsertFormComponent,
     ErrorComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
-    NgxPaginationModule,
+    HttpClientModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

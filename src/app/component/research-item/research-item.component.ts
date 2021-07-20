@@ -9,8 +9,6 @@ import {Research} from "../../model/research.model";
 export class ResearchItemComponent implements OnInit {
   @Input() onResearch!: Research[];
 
-  page: number = 1;
-
   constructor() { }
 
   ngOnInit(): void {
