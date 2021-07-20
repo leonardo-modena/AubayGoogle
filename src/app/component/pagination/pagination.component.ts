@@ -52,7 +52,9 @@ export class PaginationComponent implements OnInit {
         this.eventService.emitLink(this.last);
       }
     } else {
-      
+      const generalLink = this.first.substring(0, this.first.length - 1);
+      this.eventService.emitLink(generalLink + pageIndex);
+      // console.log(generalLink + pageIndex);
     }
   }
 
