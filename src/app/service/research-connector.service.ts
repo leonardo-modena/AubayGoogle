@@ -1,28 +1,29 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Research } from '../model/research.model';
-import { map, tap } from 'rxjs/operators';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {Research} from '../model/research.model';
+import {map, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResearchConnectorService {
-  link = new BehaviorSubject<string | null>('');
+  headerData = new BehaviorSubject<{ link: string | null, totalCount: string | null }>({link: '', totalCount: ''});
 
 
-  constructor(private httpService: HttpClient) {}
+  constructor(private httpService: HttpClient) {
+  }
 
   getAllResearch(): Observable<Research[]> {
     return this.httpService.get<Research[]>('http://localhost:3000/ricerca');
   }
 
-  getResearchByKey(chiave: string): Observable<Research[]> {
+  getResearchByKey(chiave: string, pagina: string): Observable<Research[]> {
     return this.httpService
       .get<Research[]>(
-        `http://localhost:3000/ricerca?q=${chiave}&_limit=1&_page=1`,
-        { observe: 'response' }
+        `http://localhost:3000/ricerca?q=${chiave}&_limit=1&_page=${pagina}`,
+        {observe: 'response'}
       )
       .pipe(
         map((response) => {
@@ -30,8 +31,7 @@ export class ResearchConnectorService {
           if (response.body) {
             resData = response.body;
           }
-
-          this.link.next(response.headers.get('Link'));
+          this.headerData.next({link: response.headers.get('Link'), totalCount: response.headers.get('X-Total-Count')});
 
           return resData;
         })
@@ -53,8 +53,8 @@ export class ResearchConnectorService {
 
     return this.httpService.post<Research>(
       'http://localhost:3000/ricerca',
-      { ...nuovaRicerca },
-      { headers: { Authorization: `Bearer ${token}` } }
+      {...nuovaRicerca},
+      {headers: {Authorization: `Bearer ${token}`}}
     );
   }
 }

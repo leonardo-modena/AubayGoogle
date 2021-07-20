@@ -9,7 +9,9 @@ import {EventService} from "../../service/event.service";
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnInit {
-  link: string[] = [];
+  link!: string[];
+
+  paginationLength: number[] = [];
 
   first!: string;
   last!: string;
@@ -18,11 +20,11 @@ export class PaginationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.researchService.link.subscribe(res => {
-      if (res) {
-        this.link = res.split(',');
+    this.researchService.headerData.subscribe(res => {
+      if (res.link && res.totalCount) {
+        this.link = res["link"].split(',');
 
-        let parts = res.split(',');
+        let parts = res["link"].split(',');
         const links = {};
         parts.forEach(p => {
           let section = p.split(';');
@@ -30,15 +32,14 @@ export class PaginationComponent implements OnInit {
           const name = section[1].replace(/rel="(.*)"/, '$1').trim();
           // @ts-ignore
           links[name] = url;
-
         });
-        // console.log(links);
+        let numberOfPage = res["totalCount"];
+        this.numberOfPage(numberOfPage);
         // @ts-ignore
         this.first = links['first'];
         // @ts-ignore
         this.last = links['last'];
-        // console.log(this.first);
-        // console.log(this.last);
+
       }
     });
   }
@@ -50,6 +51,14 @@ export class PaginationComponent implements OnInit {
       } else {
         this.eventService.emitLink(this.last);
       }
+    } else {
+      
+    }
+  }
+
+  numberOfPage(pageNumber: string) {
+    for (let i = 0; i < +pageNumber ; i++) {
+      this.paginationLength[i] = i + 1;
     }
   }
 
