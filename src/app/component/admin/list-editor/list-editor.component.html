@@ -1,1 +1,17 @@
-<p>list-editor works!</p>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6 col-6 cart-title mb-4">
+          <span>Ricerche Totali</span>
+        </div>
+        <div class="col-sm-6 col-6">
+            <a type="button" class="option-button">...</a>
+        </div>
+      </div>
+      <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action" *ngFor="let research of researchList">
+          <p>{{research.id}} - {{research.titolo}}</p>
+        </button>
+      </div>
+    </div>
+  </div>

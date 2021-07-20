@@ -1,0 +1,6 @@
+.option-button{
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+    color: black;
+}

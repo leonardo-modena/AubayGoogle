@@ -80,7 +80,7 @@ server.post('/auth/refreshToken', (req, res) => {
 	if(refreshToken && (refreshToken in tokenList)) {
 	    const resultOfVerification = verifyRefreshToken(refreshToken);
 		if (!resultOfVerification) {
-			const token = createRefreshToken(tokenList[refreshToken]);
+			const token = createToken(tokenList[refreshToken]);
 			const dateToken = Date.now() + 60000*5;
 			const response = {
 				access_token: token,

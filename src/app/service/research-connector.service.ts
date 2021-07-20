@@ -11,9 +11,14 @@ import { map, tap } from 'rxjs/operators';
 export class ResearchConnectorService {
   link = new BehaviorSubject<string | null>('');
 
+
   constructor(private httpService: HttpClient) {}
 
-  research(chiave: string) {
+  getAllResearch(): Observable<Research[]>{
+    return this.httpService.get<Research[]>('http://localhost:3000/ricerca');
+  }
+
+  research(chiave: string): Observable<Research[]> {
     return this.httpService
       .get<Research[]>(
         `http://localhost:3000/ricerca?q=${chiave}&_limit=1&_page=1`,

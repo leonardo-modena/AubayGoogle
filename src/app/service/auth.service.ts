@@ -12,9 +12,12 @@ export class AuthService {
   user = new BehaviorSubject<AuthUser | null>(null);
   refreshTokenInterval!: any;
 
-  constructor(private httpService: HttpClient) {}
+  constructor(private httpService: HttpClient) {
+    clearInterval(this.refreshTokenInterval)
+  }
 
   login(username: string, password: string): Observable<void> {
+    clearInterval(this.refreshTokenInterval)
     return this.httpService
       .post<AuthUser>('http://localhost:3000/auth/login', {
         user: username,
@@ -38,6 +41,8 @@ export class AuthService {
   }
 
   refreshLogin(): void {
+    clearInterval(this.refreshTokenInterval)
+
     this.user.subscribe((user) => {
       if (user) {
         if (!(user.refreshTokenExpireIn - Date.now() <= 0)) {
@@ -72,6 +77,7 @@ export class AuthService {
   }
 
   autoLogin(): void {
+    clearInterval(this.refreshTokenInterval)
     let UserSaved = localStorage.getItem('user');
 
     if (!UserSaved) {
