@@ -4,3 +4,8 @@
     text-decoration: none;
     color: black;
 }
+
+.all-research-list{
+    overflow: scroll;
+    height: 302px;
+}

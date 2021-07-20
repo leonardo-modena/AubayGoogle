@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Research } from 'src/app/model/research.model';
+import { EventService } from 'src/app/service/event.service';
 import { ResearchConnectorService } from 'src/app/service/research-connector.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class InsertFormComponent implements OnInit {
   
   newResearchForm!: FormGroup;
 
-  constructor(private researchService: ResearchConnectorService) {}
+  constructor(private researchService: ResearchConnectorService, private eventService: EventService) {}
 
   ngOnInit(): void {
     this.newResearchForm = new FormGroup({
@@ -30,16 +31,19 @@ export class InsertFormComponent implements OnInit {
     if (!this.newResearchForm.valid) return;
     this.loading = true;
 
+    let newResearch: Research = {
+      titolo: this.newResearchForm.controls.titolo.value,
+      descrizione: this.newResearchForm.controls.descrizione.value,
+      chiavi: this.newResearchForm.controls.chiavi.value,
+      url: this.newResearchForm.controls.url.value,
+    }
+
     this.researchService
-      .newResearch({
-        titolo: this.newResearchForm.controls.titolo.value,
-        descrizione: this.newResearchForm.controls.descrizione.value,
-        chiavi: this.newResearchForm.controls.chiavi.value,
-        url: this.newResearchForm.controls.url.value,
-      })
+      .newResearch(newResearch)
       ?.subscribe(
         res => {
           this.loading = false;
+          this.eventService.emitResearch(newResearch)
         },
         err => {
           this.loading = false;
