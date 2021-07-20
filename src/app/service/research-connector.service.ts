@@ -23,14 +23,14 @@ export class ResearchConnectorService {
           if (response.body) {
             resData = response.body;
           }
-          resData.forEach((item: any) => {
-            if (item.nuovaRicerca) {
-              item['titolo'] = item.nuovaRicerca.titolo;
-              item['descrizione'] = item.nuovaRicerca.descrizione;
-              item['chiavi'] = item.nuovaRicerca.chiavi;
-              item['url'] = item.nuovaRicerca.url;
-            }
-          });
+          // resData.forEach((item: any) => {
+          //   if (item.nuovaRicerca) {
+          //     item['titolo'] = item.nuovaRicerca.titolo;
+          //     item['descrizione'] = item.nuovaRicerca.descrizione;
+          //     item['chiavi'] = item.nuovaRicerca.chiavi;
+          //     item['url'] = item.nuovaRicerca.url;
+          //   }
+          // });
 
           console.log(response.headers.get("Link"))
 
@@ -51,7 +51,7 @@ export class ResearchConnectorService {
 
     return this.httpService.post<Research>(
       'http://localhost:3000/ricerca',
-      { nuovaRicerca },
+      { ...nuovaRicerca },
       { headers: { Authorization: `Bearer ${token}` } }
     );
   }
