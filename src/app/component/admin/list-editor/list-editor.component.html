@@ -7,9 +7,9 @@
         <div class="col-sm-6 col-6">
             <a type="button" class="option-button flex-end">...</a>
         </div>
-        <div class="col-sm-12 mb-2 delete-button" *ngIf="researchSelectedArray.length > 0" >
-            <i class="bi bi-trash icon-margin" (click)="onDelete()"></i>
-            <i class="bi bi-pen" (click)="onUpdate()" [ngClass]="{'icon-disabled': this.researchSelectedArray.length > 1}"></i>
+        <div class="col-sm-12 mb-2 delete-button">
+            <i class="bi bi-trash icon-margin" (click)="onDelete()" [ngClass]="{'icon-disabled': this.researchSelectedArray.length < 1}"></i>
+            <i class="bi bi-pen" (click)="onUpdate()" [ngClass]="{'icon-disabled': this.researchSelectedArray.length > 1 || this.researchSelectedArray.length < 1 }"></i>
         </div>
       </div>
       <div class="list-group all-research-list" #f>

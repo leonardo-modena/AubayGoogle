@@ -16,9 +16,7 @@ export class UpdateResearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  exitClick(){
-    console.log("cliccato");
-    
+  exitClick(){    
     this.eventService.emitEndOfUpdate();
   }
 

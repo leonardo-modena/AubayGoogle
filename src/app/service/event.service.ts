@@ -11,6 +11,8 @@ export class EventService {
 
   deleteResearch = new Subject<string>();
 
+  updateResearch = new Subject<string>();
+
   endUpdate = new Subject<undefined>();
 
   newLink = new  BehaviorSubject<string>('');
@@ -24,6 +26,10 @@ export class EventService {
 
   emitDeleteResearc(idDeletedResearch: number[]): void{
     this.deleteResearch.next(`Research Deleted id: ${idDeletedResearch.toString()}`)
+  }
+
+  emitUpdateResearch(researchUpdated: Research): void{
+    this.deleteResearch.next(`Update research: ${ researchUpdated.id, researchUpdated.titolo}`)
   }
 
   emitEndOfUpdate(){

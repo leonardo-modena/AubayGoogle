@@ -44,20 +44,22 @@ export class ResearchFormComponent implements OnInit {
 
   onSubmit(): void {
     if (!this.newResearchForm.valid) return;
+    
+    let actualResearch: Research = {
+      titolo: this.newResearchForm.controls.titolo.value,
+      descrizione: this.newResearchForm.controls.descrizione.value,
+      chiavi: this.newResearchForm.controls.chiavi.value,
+      url: this.newResearchForm.controls.url.value,
+    };
+
+
     if (!this.updateResearch) {
       this.loading = true;
 
-      let newResearch: Research = {
-        titolo: this.newResearchForm.controls.titolo.value,
-        descrizione: this.newResearchForm.controls.descrizione.value,
-        chiavi: this.newResearchForm.controls.chiavi.value,
-        url: this.newResearchForm.controls.url.value,
-      };
-
-      this.researchService.newResearch(newResearch)?.subscribe(
+      this.researchService.newResearch(actualResearch)?.subscribe(
         (res) => {
           this.loading = false;
-          this.eventService.emitResearch(newResearch);
+          this.eventService.emitResearch(actualResearch);
         },
         (err) => {
           this.loading = false;
@@ -65,6 +67,14 @@ export class ResearchFormComponent implements OnInit {
         }
       );
     } else {
+      this.researchService.updateResearch(this.updateResearch.id, actualResearch)?.subscribe( 
+        (res) => {
+          this.eventService.emitUpdateResearch(res);
+        },
+        (err) => {
+          console.log(err)
+        }
+       )
     }
 
     this.newResearchForm.reset();
