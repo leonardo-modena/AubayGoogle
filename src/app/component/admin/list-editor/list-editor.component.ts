@@ -1,5 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {  Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Research } from 'src/app/model/research.model';
 import { EventService } from 'src/app/service/event.service';
@@ -17,6 +16,8 @@ export class ListEditorComponent implements OnInit, OnDestroy {
   researchList!: Research[];
 
   toDeleteArray: number[] = []; 
+
+  researchToUpdate!: Research;
 
   
   @ViewChild('f') searchForm!: ElementRef;

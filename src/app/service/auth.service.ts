@@ -61,6 +61,7 @@ export class AuthService {
 
   IntervalRefresh(interval: number, refreshToken: string): void {
     this.refreshTokenInterval = setInterval(() => {
+      console.log("chiamato")
       this.httpService
         .post<AuthRefresh>('http://localhost:3000/auth/refreshToken', {
           refreshToken: refreshToken,
@@ -71,7 +72,6 @@ export class AuthService {
             actualUser.access_token = refreshResp.access_token;
             actualUser.tokenExpireIn = refreshResp.tokenExpireIn;
           }
-          console.log(actualUser)
           this.user.next(actualUser);
         });
     }, interval);
