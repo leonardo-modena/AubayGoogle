@@ -12,11 +12,25 @@
     cursor: pointer;
 }
 
+i{
+    color: var(--secondary-salmon) !important;
+    font-size: 18px;
+    transition: all 0.4s ease;
+
+}
+
 .icon-disabled{
-    opacity: 0;
+    color: var(--primary-black) !important;
+    opacity: 0.6;
+    cursor: not-allowed;
+    font-size: 16px;
 }
 
 .all-research-list{
     overflow: scroll;
     height: 302px;
+}
+
+.icon-margin {
+    margin-right: 1rem
 }

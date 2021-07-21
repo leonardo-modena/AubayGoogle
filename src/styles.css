@@ -1,2 +1,117 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@300;400;500;600&family=Poppins:wght@300;400;500&display=swap');
+/* 
+    font-family: 'Encode Sans SC', sans-serif;
+    font-family: 'Poppins', sans-serif;
+*/
+
+
+:root{
+    --primary-black: #303030;
+    --primary-black-opacity: #30303041;
+    --primary-white: #FFFFFF;
+    --primary-gray: #d6e3e1;
+    --secondary-salmon: #FDB599;
+    --secondary-salmon-disabled: #fcbaa0a2;
+}
+
+body{
+    color: var(--primary-black) !important;
+    background-color: var(--primary-white) !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 16px !important;
+}
+
+h4{
+    font-size: 18px;
+    font-family: 'Encode Sans SC', sans-serif;
+    font-weight: 500;
+}
+
+.ml-auto{
+    margin-left: auto;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.container-absolute{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    
+    display: flex;
+    align-items: center;
+}
+
+.btn{
+    padding: 7px 20px;
+    font-size: 14px;
+    transform: scale(1);
+    transition: all 0.6s ease !important;
+}
+
+.btn:hover{
+  box-shadow: 0px 0px 5px 2px var(--primary-black-opacity);  
+  transform: scale(1.08);
+}
+
+.btn-primary{
+    border: none;
+    border-radius: 0;
+    background-color: var(--secondary-salmon) !important;
+    border-radius: none !important;
+}
+
+.btn-primary.disabled .btn-primary:disabled{
+    border: none;
+    background-color: var(--secondary-salmon-disabled) !important;
+    border-radius: none !important;
+}
+
+.navbar{
+    padding: 11px 18px;
+}
+
+.form-group{
+    margin: 0.5rem 0 1rem 0 !important;
+}
+
+input{
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+input:focus{
+    box-shadow: 0px 0px 2px 2px var(--secondary-salmon) !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+label{
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.form-check input{
+    border: 1px solid var(--primary-black) !important;
+}
+
+.form-check input:focus{
+    box-shadow: none !important;
+}
+
+.card{
+    background-color: var(--primary-gray) !important;
+    border: none;
+    border-radius: 0;
+}
+
+.card-body{
+    padding: 18px 18px;
+}

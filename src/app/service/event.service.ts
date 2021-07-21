@@ -8,7 +8,15 @@ import { Research } from '../model/research.model';
 export class EventService {
 
   newResearch = new Subject<string>();
+
+  deleteResearch = new Subject<string>();
+
+  updateResearch = new Subject<string>();
+
+  endUpdate = new Subject<undefined>();
+
   newLink = new  BehaviorSubject<string>('');
+
 
   constructor() { }
 
@@ -16,8 +24,22 @@ export class EventService {
     this.newResearch.next(`New Research Emitted title: ${newResearch.titolo}`);
   }
 
+  emitDeleteResearc(idDeletedResearch: number[]): void{
+    this.deleteResearch.next(`Research Deleted id: ${idDeletedResearch.toString()}`)
+  }
+
+  emitUpdateResearch(researchUpdated: Research): void{
+    this.deleteResearch.next(`Update research: ${ researchUpdated.id, researchUpdated.titolo}`)
+  }
+
+  emitEndOfUpdate(){
+    this.endUpdate.next(undefined);
+  }
+
   emitLink(link: string): void{
     this.newLink.next(link);
   }
+
+  
 
 }

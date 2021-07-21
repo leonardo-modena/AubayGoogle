@@ -13,6 +13,7 @@ export class ResearchConnectorService {
 
 
   constructor(private httpService: HttpClient) {
+
   }
 
   getAllResearch(): Observable<Research[]> {
@@ -42,7 +43,7 @@ export class ResearchConnectorService {
     return this.httpService.get<Research[]>(url);
   }
 
-  newResearch(nuovaRicerca: Research) {
+  newResearch(nuovaRicerca: Research): Observable<Research> {
     return this.httpService.post<Research>(
       'http://localhost:3000/ricerca',
       {...nuovaRicerca},
@@ -50,9 +51,28 @@ export class ResearchConnectorService {
     );
   }
 
-  deleteResearch(researchId: number[] | number) {
-    return this.httpService.delete<any>(
+  deleteResearch(researchId: number[]): Observable<Research> {
+
+    let link: string = `http://localhost:3000/eliminaRisultati?`
+
+    researchId.forEach( (id, i) => {
+        if (i < researchId.length - 1) {
+          link += `id=${id}&`
+        } else {
+          link += `id=${id}`
+        }
+    } )
+     return this.httpService.delete<any>(
+      link,
+      {headers: {Authorization: `Bearer ${this.getToken()}`}}
+    );
+  }
+
+  updateResearch(researchId: number | undefined, modifiedResearch: Research): Observable<Research> | undefined{
+    if(!researchId) return;
+    return this.httpService.put<any>(
       `http://localhost:3000/ricerca/${researchId}`,
+      {...modifiedResearch},
       {headers: {Authorization: `Bearer ${this.getToken()}`}}
     );
   }
