@@ -1,4 +1,10 @@
-import {  Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Research } from 'src/app/model/research.model';
 import { EventService } from 'src/app/service/event.service';
@@ -7,71 +13,96 @@ import { ResearchConnectorService } from 'src/app/service/research-connector.ser
 @Component({
   selector: 'app-list-editor',
   templateUrl: './list-editor.component.html',
-  styleUrls: ['./list-editor.component.css']
+  styleUrls: ['./list-editor.component.css'],
 })
 export class ListEditorComponent implements OnInit, OnDestroy {
-
   eventServiceSubscription!: Subscription;
 
   researchList!: Research[];
 
-  toDeleteArray: number[] = []; 
+  researchSelectedArray: number[] = [];
 
-  researchToUpdate!: Research;
+  researchToUpdate!: Research | undefined;
 
-  
   @ViewChild('f') searchForm!: ElementRef;
 
-  constructor(private researchService: ResearchConnectorService, private eventService: EventService) { }
+  constructor(
+    private researchService: ResearchConnectorService,
+    private eventService: EventService
+  ) {}
 
   ngOnInit(): void {
-
-
-    this.researchService.getAllResearch().subscribe( (allResearch: Research[]) => {
-      this.researchList = allResearch;
-    });
-
-    this.eventServiceSubscription = this.eventService.newResearch.subscribe( (researchLog: string) => {
-      console.log(researchLog);
-      this.researchService.getAllResearch().subscribe( (allResearch: Research[]) => {
+    this.researchService
+      .getAllResearch()
+      .subscribe((allResearch: Research[]) => {
         this.researchList = allResearch;
-      } )
-    });
+      });
 
-    this.eventServiceSubscription = this.eventService.deleteResearch.subscribe( (researchLog: string) => {
-      console.log(researchLog);
-      this.researchService.getAllResearch().subscribe( (allResearch: Research[]) => {
-        this.researchList = allResearch;
-      } )
-    })
+    this.eventServiceSubscription = this.eventService.newResearch.subscribe(
+      (researchLog: string) => {
+        console.log(researchLog);
+        this.researchService
+          .getAllResearch()
+          .subscribe((allResearch: Research[]) => {
+            this.researchList = allResearch;
+          });
+      }
+    );
 
+    this.eventServiceSubscription = this.eventService.deleteResearch.subscribe(
+      (researchLog: string) => {
+        console.log(researchLog);
+        this.researchService
+          .getAllResearch()
+          .subscribe((allResearch: Research[]) => {
+            this.researchList = allResearch;
+          });
+      }
+    );
+
+    this.eventServiceSubscription = this.eventService.endUpdate.subscribe(
+      (value) => {
+        this.researchToUpdate = value;
+      }
+    );
   }
 
   onDelete(): void {
-    console.log(this.toDeleteArray)
-    this.researchService.deleteResearch(this.toDeleteArray)
-    .subscribe( 
+    this.researchService.deleteResearch(this.researchSelectedArray).subscribe(
       (res) => {
-        this.eventService.emitDeleteResearc(this.toDeleteArray)
+        this.eventService.emitDeleteResearc(this.researchSelectedArray);
       },
-      err => {console.log(err)}
-    )
-  }
-
-  ngOnDestroy(): void {
-    this.eventServiceSubscription.unsubscribe()
-  }
-
-  addRemoveElement(elementId: number | undefined){
-    if (elementId) {   
-      if ( !(this.toDeleteArray.includes(elementId)) ) {
-        this.toDeleteArray.push(elementId);
-      }else {
-        let arrayId = this.toDeleteArray.indexOf(elementId);
-        this.toDeleteArray.splice(arrayId,1);
+      (err) => {
+        console.log(err);
       }
+    );
+  }
+
+  onUpdate(): void {
+    if (!(this.researchSelectedArray.length > 1)) {
+      this.researchToUpdate =
+        this.researchList.filter((el) => {
+          if (el.id === this.researchSelectedArray[0]) {
+            return el;
+          } else return;
+        })[0]
+      
+    } else return;
+  }
+
+  addSelectedElement(elementId: number | undefined): void {
+    if (elementId) {
+      if (!this.researchSelectedArray.includes(elementId)) {
+        this.researchSelectedArray.push(elementId);
+      } else {
+        let arrayId = this.researchSelectedArray.indexOf(elementId);
+        this.researchSelectedArray.splice(arrayId, 1);
+      }
+      console.log(this.researchSelectedArray);
     }
   }
 
-
+  ngOnDestroy(): void {
+    this.eventServiceSubscription.unsubscribe();
+  }
 }

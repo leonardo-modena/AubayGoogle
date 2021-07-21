@@ -7,8 +7,9 @@
         <div class="col-sm-6 col-6">
             <a type="button" class="option-button flex-end">...</a>
         </div>
-        <div class="col-sm-12 mb-2 delete-button" *ngIf="toDeleteArray.length > 0" (click)="onDelete()">
-            <i class="bi bi-trash"></i>
+        <div class="col-sm-12 mb-2 delete-button" *ngIf="researchSelectedArray.length > 0" >
+            <i class="bi bi-trash icon-margin" (click)="onDelete()"></i>
+            <i class="bi bi-pen" (click)="onUpdate()" [ngClass]="{'icon-disabled': this.researchSelectedArray.length > 1}"></i>
         </div>
       </div>
       <div class="list-group all-research-list" #f>
@@ -17,7 +18,7 @@
             <div class="row">              
               <p class="col-sm-10">{{research.id}} - {{research.titolo}}</p>
               <div class="form-check col-sm-2  flex-end">
-                <input (click)="addRemoveElement(research.id)" class="form-check-input" type="checkbox" value="" ngModel name="research{{research.id}}">
+                <input (click)="addSelectedElement(research.id)" class="form-check-input" type="checkbox" value="" ngModel name="research{{research.id}}">
               </div>
             </div>
           </form>
@@ -26,4 +27,4 @@
     </div>
   </div>
 
-  <app-update-research [researchToUpdate]='researchToUpdate'></app-update-research>
+  <app-update-research [researchToUpdate]='researchToUpdate' *ngIf="researchToUpdate"></app-update-research>
