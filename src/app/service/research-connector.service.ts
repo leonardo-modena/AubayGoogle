@@ -50,9 +50,19 @@ export class ResearchConnectorService {
     );
   }
 
-  deleteResearch(researchId: number[] | number) {
-    return this.httpService.delete<any>(
-      `http://localhost:3000/ricerca/${researchId}`,
+  deleteResearch(researchId: number[]) {
+
+    let link: string = `http://localhost:3000/eliminaRisultati?`
+
+    researchId.forEach( (id, i) => {
+        if (i < researchId.length - 1) {
+          link += `id=${id}&`
+        } else {
+          link += `id=${id}`
+        }
+    } )
+     return this.httpService.delete<any>(
+      link,
       {headers: {Authorization: `Bearer ${this.getToken()}`}}
     );
   }

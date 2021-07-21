@@ -28,9 +28,16 @@ export class ListEditorComponent implements OnInit, OnDestroy {
 
     this.researchService.getAllResearch().subscribe( (allResearch: Research[]) => {
       this.researchList = allResearch;
-    })
+    });
 
     this.eventServiceSubscription = this.eventService.newResearch.subscribe( (researchLog: string) => {
+      console.log(researchLog);
+      this.researchService.getAllResearch().subscribe( (allResearch: Research[]) => {
+        this.researchList = allResearch;
+      } )
+    });
+
+    this.eventServiceSubscription = this.eventService.deleteResearch.subscribe( (researchLog: string) => {
       console.log(researchLog);
       this.researchService.getAllResearch().subscribe( (allResearch: Research[]) => {
         this.researchList = allResearch;
@@ -41,8 +48,11 @@ export class ListEditorComponent implements OnInit, OnDestroy {
 
   onDelete(): void {
     console.log(this.toDeleteArray)
-    this.researchService.deleteResearch(this.toDeleteArray[0]).subscribe( 
-      (res) => {console.log(res)},
+    this.researchService.deleteResearch(this.toDeleteArray)
+    .subscribe( 
+      (res) => {
+        this.eventService.emitDeleteResearc(this.toDeleteArray)
+      },
       err => {console.log(err)}
     )
   }

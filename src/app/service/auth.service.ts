@@ -11,6 +11,7 @@ import { AuthUser } from '../model/auth-user.model';
 export class AuthService {
   user = new BehaviorSubject<AuthUser | null>(null);
   refreshTokenInterval!: any;
+  
 
   constructor(private httpService: HttpClient) {
     clearInterval(this.refreshTokenInterval)

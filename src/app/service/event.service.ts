@@ -8,12 +8,17 @@ import { Research } from '../model/research.model';
 export class EventService {
 
   newResearch = new Subject<string>();
+  deleteResearch = new Subject<string>()
   newLink = new  BehaviorSubject<string>('');
 
   constructor() { }
 
   emitResearch(newResearch: Research): void{
     this.newResearch.next(`New Research Emitted title: ${newResearch.titolo}`);
+  }
+
+  emitDeleteResearc(idDeletedResearch: number[]): void{
+    this.deleteResearch.next(`Research Deleted id: ${idDeletedResearch.toString()}`)
   }
 
   emitLink(link: string): void{
