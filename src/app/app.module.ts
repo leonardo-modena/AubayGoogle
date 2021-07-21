@@ -12,8 +12,7 @@ import { LoginComponent } from './component/login/login.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { HeaderComponent } from './component/header/header.component';
 import { AuthService } from './service/auth.service';
-import { InsertFormComponent } from './component/admin/insert-form/insert-form.component';
-import {NgxPaginationModule} from "ngx-pagination";
+import {ResearchFormComponent } from './component/admin/research-form/research-form.component';
 import {ResearchItemComponent} from "./component/research-item/research-item.component";
 import { ErrorComponent } from './component/error/error.component';
 
@@ -21,6 +20,7 @@ import { ErrorComponent } from './component/error/error.component';
 import { ErrorInterceptor } from './interceptor/error.interceptor';
 import { PaginationComponent } from './component/pagination/pagination.component';
 import { ListEditorComponent } from './component/admin/list-editor/list-editor.component';
+import { UpdateResearchComponent } from './component/admin/update-research/update-research.component';
 
 
 
@@ -33,10 +33,11 @@ import { ListEditorComponent } from './component/admin/list-editor/list-editor.c
     LoginComponent,
     AdminComponent,
     HeaderComponent,
-    InsertFormComponent,
+    ResearchFormComponent,
     ErrorComponent,
     PaginationComponent,
     ListEditorComponent,
+    UpdateResearchComponent,
   ],
   imports: [
     BrowserModule,
