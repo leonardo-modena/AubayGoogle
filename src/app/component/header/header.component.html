@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active" >Navbar</a>
+    <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active" ><h3>AubayGoogle</h3></a>
 
     <div class="collapse navbar-collapse justify-end">
       <ul class="navbar-nav">
@@ -7,9 +7,9 @@
           <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" *ngIf="!!!loggedUser">Log In</a>
           <a class="nav-link" style="cursor: pointer;" *ngIf="!!loggedUser" (click)="onLogOut()">Log Out</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="active" *ngIf="!!loggedUser">{{username}}</a>
-        </li>
+        <a class="navbar-brand" [routerLink]="['/admin']"  routerLinkActive="active" >
+          <img class="img-fluid" src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png"  *ngIf="!!loggedUser" alt="" width="30" height="24">
+        </a>
       </ul>
     </div>
   </nav>

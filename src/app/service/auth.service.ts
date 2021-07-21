@@ -14,7 +14,7 @@ export class AuthService {
   
 
   constructor(private httpService: HttpClient) {
-    clearInterval(this.refreshTokenInterval)
+    this.refreshTokenInterval = null;
   }
 
   login(username: string, password: string): Observable<void> {
