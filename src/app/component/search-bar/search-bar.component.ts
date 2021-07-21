@@ -13,6 +13,8 @@ export class SearchBarComponent implements OnInit {
   research!: Research[];
   inputSearch!: FormGroup;
 
+  hiddenPagination = true;
+
   constructor(private researchService: ResearchConnectorService, private eventService: EventService) {
   }
 
@@ -38,6 +40,7 @@ export class SearchBarComponent implements OnInit {
       this.researchService.getResearchByKey(this.inputSearch.controls.searchBar.value, '1')
         .subscribe((res) => {
           this.research = res;
+          this.hiddenPagination = false;
         });
     } else {
       alert('inserire parola');

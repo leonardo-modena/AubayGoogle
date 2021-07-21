@@ -12,6 +12,7 @@ export class PaginationComponent implements OnInit {
   link!: string[];
 
   paginationLength: number[] = [];
+  currentPage!: number;
 
   first!: string;
   last!: string;
@@ -21,6 +22,8 @@ export class PaginationComponent implements OnInit {
 
   ngOnInit(): void {
     this.researchService.headerData.subscribe(res => {
+      this.resetResearch();
+
       if (res.link && res.totalCount) {
         this.link = res["link"].split(',');
 
@@ -47,21 +50,31 @@ export class PaginationComponent implements OnInit {
   onPageChanged(pageIndex: string | number) {
     if (typeof pageIndex === 'string') {
       if (pageIndex === 'first') {
+        this.currentPage = 1;
         this.eventService.emitLink(this.first);
       } else {
+        this.currentPage = this.paginationLength.length;
         this.eventService.emitLink(this.last);
       }
     } else {
       const generalLink = this.first.substring(0, this.first.length - 1);
       this.eventService.emitLink(generalLink + pageIndex);
-      // console.log(generalLink + pageIndex);
+      this.currentPage = pageIndex;
     }
   }
 
   numberOfPage(pageNumber: string) {
-    for (let i = 0; i < +pageNumber ; i++) {
+    for (let i = 0; i < +pageNumber; i++) {
       this.paginationLength[i] = i + 1;
     }
+  }
+
+  resetResearch(): void {
+    this.link = [];
+    this.paginationLength = [];
+    this.first = '';
+    this.last = '';
+    this.currentPage = 1;
   }
 
 }

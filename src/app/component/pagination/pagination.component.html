@@ -3,15 +3,18 @@
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Previous" (click)="onPageChanged('first')">
         <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only" >First</span>
+        <span class="sr-only">First</span>
       </a>
     </li>
     <li class="page-item"
         *ngFor="let page of paginationLength"
-        (click)="onPageChanged(page)"><a class="page-link" href="#">{{ page }}</a></li>
+        (click)="onPageChanged(page)"
+        [ngClass]="{active: currentPage === page}">
+      <a class="page-link" href="#">{{ page }}</a>
+    </li>
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Next" (click)="onPageChanged('last')">
-        <span class="sr-only" >Last</span>
+        <span class="sr-only">Last</span>
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
