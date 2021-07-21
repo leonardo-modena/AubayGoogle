@@ -6,10 +6,14 @@
             <p>User:  {{username | titlecase}}</p>
         </div>
         <div class="col-sm-9 col-md-6 mx-auto">
-            <app-research-form></app-research-form>
+            <div class="card">
+                <div class="card-body">
+                    <app-research-form></app-research-form>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-sm-3"></div>
         <div class="col-sm-9 col-md-6 offset-sm-3 mx-auto">
             <app-list-editor></app-list-editor>

@@ -12,9 +12,18 @@
     cursor: pointer;
 }
 
+i{
+    color: var(--secondary-salmon) !important;
+    transform: scale(1.4);
+    transition: all 0.4s ease;
+
+}
+
 .icon-disabled{
+    color: var(--primary-black) !important;
     opacity: 0.6;
     cursor: not-allowed;
+    transform: scale(1);
 }
 
 .all-research-list{
