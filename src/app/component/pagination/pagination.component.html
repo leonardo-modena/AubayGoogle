@@ -1,6 +1,6 @@
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
-    <li class="page-item">
+    <li class="page-item" [ngClass]="{disabled: currentPage === 1}">
       <a class="page-link" href="#" aria-label="Previous" (click)="onPageChanged('first')">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">First</span>
@@ -12,7 +12,7 @@
         [ngClass]="{active: currentPage === page}">
       <a class="page-link" href="#">{{ page }}</a>
     </li>
-    <li class="page-item">
+    <li class="page-item" [ngClass]="{disabled: currentPage === paginationLength.length}">
       <a class="page-link" href="#" aria-label="Next" (click)="onPageChanged('last')">
         <span class="sr-only">Last</span>
         <span aria-hidden="true">&raquo;</span>
