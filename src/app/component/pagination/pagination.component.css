@@ -1,0 +1,10 @@
+.page-link {
+  border-radius: 0 !important;
+}
+
+.page-item.active .page-link {
+  background-color: var(--secondary-salmon);
+  border: none;
+}
+
+

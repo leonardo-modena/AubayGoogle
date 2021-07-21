@@ -1,22 +1,38 @@
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item" [ngClass]="{disabled: currentPage === 1}">
-      <a class="page-link" href="#" aria-label="Previous" (click)="onPageChanged('first')">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">First</span>
-      </a>
-    </li>
-    <li class="page-item"
-        *ngFor="let page of paginationLength"
-        (click)="onPageChanged(page)"
-        [ngClass]="{active: currentPage === page}">
-      <a class="page-link" href="#">{{ page }}</a>
-    </li>
-    <li class="page-item" [ngClass]="{disabled: currentPage === paginationLength.length}">
-      <a class="page-link" href="#" aria-label="Next" (click)="onPageChanged('last')">
-        <span class="sr-only">Last</span>
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-10">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item" [ngClass]="{disabled: currentPage === 1}">
+            <a class="page-link" href="#" aria-label="Previous" (click)="onPageChanged('first')">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">First</span>
+            </a>
+          </li>
+          <li class="page-item"
+              *ngFor="let page of paginationLength"
+              (click)="onPageChanged(page)"
+              [ngClass]="{active: currentPage === page}">
+            <a class="page-link" href="#">{{ page }}</a>
+          </li>
+          <li class="page-item" [ngClass]="{disabled: currentPage === paginationLength.length}">
+            <a class="page-link" href="#" aria-label="Next" (click)="onPageChanged('last')">
+              <span class="sr-only">Last</span>
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col col-lg-2">
+      <form class="justify-content-end">
+        <label>items per page: </label>
+        <select>
+          <option>5</option>
+          <option>10</option>
+          <option>15</option>
+        </select>
+      </form>
+    </div>
+  </div>
+</div>
