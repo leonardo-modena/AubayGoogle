@@ -1,8 +1,10 @@
-<div class="container">
+<div class="container mt-5">
   <div class="col-sm-12" *ngIf="loading"><app-loader></app-loader></div>
     <div class="row">
         <div class="col-md-6 offset-md-3" *ngIf="!loading">
-            <form [formGroup]="authForm" class="mb-2">
+          <div class="card">
+            <div class="card-body">
+              <form [formGroup]="authForm" class="mb-2">
                 <div class="form-group">
                   <label for="inputUser">User</label>
                   <input type="text" class="form-control" id="inputUser" formControlName="user">
@@ -15,6 +17,8 @@
                 <button type="submit" class="btn btn-primary" [ngClass]="{'disabled' : !authForm.valid}" (click)="onSubmit()">{{loginMode ? 'Login' : 'Sign Up' }}</button>
             </form>  
             <a (click)="switchMode()" class="switch-text">Switch to: {{loginMode ? 'Login' : 'Sign Up' }}</a>
+            </div>
+          </div>
         </div>
         <div class="col-sm-12">
           <app-error [error]="errorMessage" *ngIf="errorMessage"></app-error>

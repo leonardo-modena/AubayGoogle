@@ -3,7 +3,6 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
-  ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Research } from 'src/app/model/research.model';
@@ -23,8 +22,6 @@ export class ListEditorComponent implements OnInit, OnDestroy {
   researchSelectedArray: number[] = [];
 
   researchToUpdate!: Research | undefined;
-
-  @ViewChild('f') searchForm!: ElementRef;
 
   constructor(
     private researchService: ResearchConnectorService,
