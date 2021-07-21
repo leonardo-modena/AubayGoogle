@@ -12,6 +12,8 @@ import { AuthService } from 'src/app/service/auth.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   authServiceSubscription!: Subscription;
 
+  showMenu: boolean = false;
+
   loggedUser: AuthUser | null = null;
   username: string | undefined;
 
@@ -34,5 +36,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.authServiceSubscription)
       this.authServiceSubscription.unsubscribe();
+  }
+
+  clickMenu(){
+    this.showMenu = !this.showMenu
   }
 }

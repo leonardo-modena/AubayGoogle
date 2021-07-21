@@ -5,11 +5,16 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" *ngIf="!!!loggedUser">Log In</a>
-          <a class="nav-link" style="cursor: pointer;" *ngIf="!!loggedUser" (click)="onLogOut()">Log Out</a>
         </li>
-        <a class="navbar-brand" [routerLink]="['/admin']"  routerLinkActive="active" >
-          <img class="img-fluid" src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png"  *ngIf="!!loggedUser" alt="" width="30" height="24">
+        <a class="navbar-brand pointer" >
+          <img class="img-fluid user-image" src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png" (click)="clickMenu()"  *ngIf="!!loggedUser" alt="" width="30" height="24">
         </a>
       </ul>
+    </div>
+    <div class="card card-absolute shadow-light" *ngIf="showMenu">
+      <div class="card-body menu-card">
+        <a class="pointer"  [routerLink]="['/admin']"  routerLinkActive="active" (click)="clickMenu()">Admin Panel</a>
+        <a class="pointer"  (click)="onLogOut()" (click)="clickMenu()">Log Out</a>
+      </div>
     </div>
   </nav>
