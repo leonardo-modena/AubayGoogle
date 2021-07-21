@@ -14,7 +14,7 @@
 
 i{
     color: var(--secondary-salmon) !important;
-    transform: scale(1.4);
+    font-size: 18px;
     transition: all 0.4s ease;
 
 }
@@ -23,7 +23,7 @@ i{
     color: var(--primary-black) !important;
     opacity: 0.6;
     cursor: not-allowed;
-    transform: scale(1);
+    font-size: 16px;
 }
 
 .all-research-list{
