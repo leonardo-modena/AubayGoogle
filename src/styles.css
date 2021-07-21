@@ -57,6 +57,10 @@ body{
     border-radius: none !important;
 }
 
+.navbar{
+    padding: 11px 18px;
+}
+
 .card{
     background-color: var(--primary-gray) !important;
     border: none;
