@@ -4,9 +4,12 @@
   </div>
   <!--  <br/>-->
   <div class="row justify-content-center">
-    <div class="col-12 col-md-10 col-lg-8">
-      <form class="card card-sm" [formGroup]="inputSearch">
-        <div class="card-body row no-gutters align-items-center">
+    <div class="col-12 col-md-10 col-lg-9">
+      <form class="" [formGroup]="inputSearch">
+        <div class="row no-gutters align-items-center">
+          <div class="col-auto">
+            <i class="bi bi-search h4 text-body"></i>
+          </div>
           <div class="col">
             <input class="form-control form-control-lg form-control-borderless" type="search"
                    placeholder="Search topics or keywords" formControlName="searchBar">
@@ -19,9 +22,11 @@
       <app-research-item [onResearch]="research"></app-research-item>
     </div>
   </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <app-pagination *ngIf="!this.hiddenPagination"></app-pagination>
-      </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <app-pagination *ngIf="!this.hiddenPagination"></app-pagination>
     </div>
+  </div>
 </div>
+
+
