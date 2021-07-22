@@ -6,15 +6,8 @@
                     <div class="btn btn-primary add-btn pointer" (click)=onNewResearch()><i class="bi bi-plus-lg add-icon"></i>AGGIUNGI RICERCA</div>
                 </div>
             </div>
-
-            <div class="card" id='counter-card'>
-                <div class="card-body shadow-left-light">
-                    <h4>| Ricerche Totali:</h4>
-                    <div class="div-number-research my-4">
-                        <span id="number-research">123</span>
-                    </div>
-                </div>
-            </div>
+           
+            <app-research-number></app-research-number>
         </div>
         <div class="col-sm-9 ">
             <app-list-editor></app-list-editor>

@@ -21,6 +21,7 @@ import { ErrorInterceptor } from './interceptor/error.interceptor';
 import { PaginationComponent } from './component/pagination/pagination.component';
 import { ListEditorComponent } from './component/admin/list-editor/list-editor.component';
 import { ManageResearchComponent } from './component/admin/manage-research/manage-research.component';
+import { ResearchNumberComponent } from './component/admin/research-number/research-number.component';
 
 
 
@@ -38,6 +39,7 @@ import { ManageResearchComponent } from './component/admin/manage-research/manag
     PaginationComponent,
     ListEditorComponent,
     ManageResearchComponent,
+    ResearchNumberComponent,
   ],
   imports: [
     BrowserModule,
