@@ -12,7 +12,7 @@
             <i class="bi bi-pen" (click)="onUpdate()" [ngClass]="{'icon-disabled': this.researchSelectedArray.length > 1 || this.researchSelectedArray.length < 1 }"></i>
         </div>
       </div>
-      <div class="list-group all-research-list">
+      <div class="list-group all-research-list" #cl>
         <button type="button" class="list-group-item list-group-item-action" *ngFor="let research of researchList">
           <form>
             <div class="row">              

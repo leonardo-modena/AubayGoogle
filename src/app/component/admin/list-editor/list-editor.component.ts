@@ -3,6 +3,7 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Research } from 'src/app/model/research.model';
@@ -15,6 +16,10 @@ import { ResearchConnectorService } from 'src/app/service/research-connector.ser
   styleUrls: ['./list-editor.component.css'],
 })
 export class ListEditorComponent implements OnInit, OnDestroy {
+  @ViewChild('cl') checkList: any;
+
+  buttonList: any;
+
   eventServiceSubscription!: Subscription;
 
   researchList!: Research[];
@@ -33,7 +38,7 @@ export class ListEditorComponent implements OnInit, OnDestroy {
       .getAllResearch()
       .subscribe((allResearch: Research[]) => {
         this.researchList = allResearch;
-      });
+    });
 
     this.eventServiceSubscription = this.eventService.newResearch.subscribe(
       (researchLog: string) => {
@@ -76,7 +81,7 @@ export class ListEditorComponent implements OnInit, OnDestroy {
   }
 
   onDelete(): void {
-    if (!(this.researchSelectedArray.length < 1)) {   
+    if (!(this.researchSelectedArray.length < 1)) {
       this.researchService.deleteResearch(this.researchSelectedArray).subscribe(
         (res) => {
           this.eventService.emitDeleteResearc(this.researchSelectedArray);
@@ -85,18 +90,20 @@ export class ListEditorComponent implements OnInit, OnDestroy {
           console.log(err);
         }
       );
-    }else return;
+      this.unCheckElement()
+      this.researchSelectedArray = [];
+    } else return;
   }
 
   onUpdate(): void {
     if (!(this.researchSelectedArray.length > 1)) {
-      this.researchToUpdate =
-        this.researchList.filter((el) => {
-          if (el.id === this.researchSelectedArray[0]) {
-            return el;
-          } else return;
-        })[0]
-      
+      this.researchToUpdate = this.researchList.filter((el) => {
+        if (el.id === this.researchSelectedArray[0]) {
+          return el;
+        } else return;
+      })[0];
+      this.unCheckElement()
+      this.researchSelectedArray = [];
     } else return;
   }
 
@@ -109,6 +116,16 @@ export class ListEditorComponent implements OnInit, OnDestroy {
         this.researchSelectedArray.splice(arrayId, 1);
       }
     }
+  }
+
+  unCheckElement(): void{
+    this.checkList.nativeElement.childNodes.forEach((element: any) => {
+      if(element.nodeType === 1){
+        if (element.childNodes[0][0].checked) {
+          element.childNodes[0][0].checked = false;
+        }    
+      }
+    });
   }
 
   ngOnDestroy(): void {
