@@ -1,0 +1,16 @@
+#counter-card {
+  margin: 24px 0 24px 0;
+}
+#number-research {
+  font-size: 34px;
+  letter-spacing: 6px;
+  font-weight: 500;
+}
+
+.div-number-research {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}

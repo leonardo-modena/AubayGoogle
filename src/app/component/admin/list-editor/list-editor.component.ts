@@ -96,6 +96,7 @@ export class ListEditorComponent implements OnInit, OnDestroy {
       );
       this.unCheckElement();
       this.researchSelectedArray = [];
+      this.checked = false;
     } else return;
   }
 
@@ -108,6 +109,7 @@ export class ListEditorComponent implements OnInit, OnDestroy {
       })[0];
       this.unCheckElement();
       this.researchSelectedArray = [];
+      this.checked = false;
     } else return;
   }
 
@@ -122,6 +124,8 @@ export class ListEditorComponent implements OnInit, OnDestroy {
     }
     if (this.researchSelectedArray.length > 0) {
       this.checked = true;
+    } else if (this.researchSelectedArray.length === 0){
+      this.checked = false
     }
   }
 

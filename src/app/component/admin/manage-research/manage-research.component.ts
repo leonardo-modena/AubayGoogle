@@ -3,11 +3,11 @@ import { Research } from 'src/app/model/research.model';
 import { EventService } from 'src/app/service/event.service';
 
 @Component({
-  selector: 'app-update-research',
-  templateUrl: './update-research.component.html',
-  styleUrls: ['./update-research.component.css']
+  selector: 'app-manage-research',
+  templateUrl: './manage-research.component.html',
+  styleUrls: ['./manage-research.component.css']
 })
-export class UpdateResearchComponent implements OnInit {
+export class ManageResearchComponent implements OnInit {
 
   @Input() researchToUpdate!: Research | undefined;
 
