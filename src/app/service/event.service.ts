@@ -44,7 +44,4 @@ export class EventService {
   emitError(error: string): void {
     this.newError.next(error)
   }
-
-  
-
 }

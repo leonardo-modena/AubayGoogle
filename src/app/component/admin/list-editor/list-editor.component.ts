@@ -1,6 +1,5 @@
 import {
   Component,
-  ElementRef,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -17,11 +16,8 @@ import { ResearchConnectorService } from 'src/app/service/research-connector.ser
 })
 export class ListEditorComponent implements OnInit, OnDestroy {
   @ViewChild('cl') checkList: any;
-  
+
   eventServiceSubscription: Subscription[] = [];
-
-  buttonList: any;
-
 
   researchList!: Research[];
 
@@ -138,12 +134,6 @@ export class ListEditorComponent implements OnInit, OnDestroy {
     }
   }
 
-  //on Develop
-  // checkUncheckElement(id: number){
-  //   this.checkList.nativeElement.childNodes[id].childNodes[0][0].checked = !this.checkList.nativeElement.childNodes[id].childNodes[0][0].checked
-  //   this.addSelectedElement(id + 1);
-  // }
-
   unCheckElement(): void {
     this.checkList.nativeElement.childNodes.forEach((element: any) => {
       if (element.nodeType === 1) {
@@ -154,7 +144,6 @@ export class ListEditorComponent implements OnInit, OnDestroy {
     });
   }
 
-  //toCheck === true to select all elements; false to deselect all elements
   checkUncheckAll(toCheck: boolean): void {
     this.checkList.nativeElement.childNodes.forEach((element: any) => {
       if (element.nodeType === 1) {
