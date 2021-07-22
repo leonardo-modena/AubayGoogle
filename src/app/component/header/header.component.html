@@ -7,7 +7,7 @@
           <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" *ngIf="!!!loggedUser">Log In</a>
         </li>
         <a class="navbar-brand pointer" >
-          <img class="img-fluid user-image" src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png" (click)="clickMenu()"  *ngIf="!!loggedUser" alt="" width="30" height="24">
+          <img class="img-fluid user-image" src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png" (click)="clickMenu()"  *ngIf="!!loggedUser" [ngClass]="{'shadow-light': showMenu}" alt="" width="30" height="24">
         </a>
       </ul>
     </div>
