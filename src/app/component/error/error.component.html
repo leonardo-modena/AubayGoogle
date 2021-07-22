@@ -1,5 +1,5 @@
-<div class="card">
+<div class="card-red" [ngClass]="{'card-green': info}">
     <div class="card-body">
-        <span>{{error | uppercase}} </span>
+        <span>{{(error ? error : info) | uppercase}} </span>
     </div>
 </div>

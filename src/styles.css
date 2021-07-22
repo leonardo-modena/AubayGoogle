@@ -16,6 +16,7 @@
     --secondary-salmon: #FDB599;
     --secondary-salmon-disabled: #b88976a2;
     --error-color: #d18e8e7a !important ; 
+    --info-color: #8ed1b27a !important; 
 }
 
 body{

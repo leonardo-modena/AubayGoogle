@@ -18,14 +18,15 @@ export class AdminComponent implements OnInit, OnDestroy {
   username: string | undefined
 
   error!: string; 
-  errorTim!: any;
-
+  info!: string;
+  logTim!: any;
+  
   newResearch: boolean = false;
 
   constructor(private authService: AuthService, private eventService: EventService) { }
 
   ngOnInit(): void {
-    clearTimeout(this.errorTim)
+    clearTimeout(this.logTim)
     this.authService.user.subscribe(
       (actualUser: AuthUser | null) => {
       this.loggedUser = actualUser
@@ -37,8 +38,24 @@ export class AdminComponent implements OnInit, OnDestroy {
     )
 
     this.eventServiceSubscription = this.eventService.newResearch.subscribe(
-      () => {
+      ( log ) => {
+        this.info = log
         this.newResearch = false;
+        this.timeoutLog();
+      }
+    );
+
+    this.eventServiceSubscription = this.eventService.deleteResearch.subscribe(
+      ( log ) => {
+        this.info = log
+        this.timeoutLog();
+      }
+    );
+
+    this.eventServiceSubscription = this.eventService.updateResearch.subscribe(
+      ( log ) => {
+        this.info = log
+        this.timeoutLog();
       }
     );
 
@@ -51,7 +68,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.eventServiceSubscription = this.eventService.newError.subscribe(
       (newError) => {
         this.error = newError;
-        this.errorTimeout();
+        this.timeoutLog();
       }
     )
   }
@@ -60,9 +77,10 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.newResearch = !this.newResearch;
   }
 
-  errorTimeout(){
-    this.errorTim = setTimeout(() => {
+  timeoutLog(){
+    this.logTim = setTimeout(() => {
       this.error = '';
+      this.info ='';
     }, 6000);
   }
 
