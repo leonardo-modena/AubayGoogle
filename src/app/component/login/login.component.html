@@ -17,9 +17,8 @@
                   <input type="password" class="form-control" id="inputPassword" formControlName="password">
                 </div>
                 
-                <button type="submit" class="btn btn-primary" [ngClass]="{'disabled' : !authForm.valid}" (click)="onSubmit()">{{loginMode ? 'Login' : 'Sign Up' }}</button>
+                <button class="btn btn-primary" [ngClass]="{'disabled' : !authForm.valid}" (click)="onSubmit()">Login</button>
             </form>  
-            <a (click)="switchMode()" class="switch-text">Switch to: {{loginMode ? 'Login' : 'Sign Up' }}</a>
             </div>
           </div>
         </div>

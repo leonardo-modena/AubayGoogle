@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loading: boolean = false;
 
-  loginMode: boolean = false;
   authForm: FormGroup = new FormGroup({});
 
   constructor(private authService: AuthService, private router: Router) { }
@@ -29,27 +28,26 @@ export class LoginComponent implements OnInit, OnDestroy {
     })
   }
 
-  switchMode(){
-    this.loginMode = !this.loginMode
-  }
-
   onSubmit(): void {
     this.loading = true;
-    if (!this.authForm.valid) {
-      return;
-    } 
-    this.authServiceSubscription = this.authService.login(this.authForm.controls.user.value, this.authForm.controls.password.value).subscribe(
-      res => {
-        this.loading = false;
-        this.errorMessage = null;
-        this.router.navigate(["/admin"])
-        
-      },
-      err => {
+    setTimeout(() => {
+      if (this.authForm.valid) {
+        this.authServiceSubscription = this.authService.login(this.authForm.controls.user.value, this.authForm.controls.password.value).subscribe(
+          res => {
+            this.loading = false;
+            this.errorMessage = null;
+            this.router.navigate(["/admin"])
+            
+          },
+          err => {
+            this.loading = false
+            this.errorMessage = err;
+          }
+        );
+      } else{
         this.loading = false
-        this.errorMessage = err;
       }
-    );
+    }, 800);
   }
 
   ngOnDestroy(): void {
