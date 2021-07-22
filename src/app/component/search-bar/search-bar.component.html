@@ -1,18 +1,17 @@
 <div class="container">
-
   <div class="row justify-content-center mt-5">
     <div class="col-12 col-md-10 col-lg-9">
-      <form class="" [formGroup]="inputSearch">
+      <form class="" [formGroup]="inputSearch" (ngSubmit)="onSearch()">
         <div class="row no-gutters align-items-center">
           <div class="col-auto">
             <i class="bi bi-search h4 text-body"></i>
           </div>
           <div class="col">
-            <input class="form-control form-control-lg form-control-borderless" type="search"
+            <input class="form-control form-control-lg" type="search"
                    placeholder="Search topics or keywords" formControlName="searchBar">
           </div>
           <div class="col-auto">
-            <button class="btn btn-lg btn-danger" type="submit" (click)="onSearch()">Search</button>
+<!--            <button class="btn btn-lg btn-danger" type="submit" (click)="onSearch()">Search</button>-->
           </div>
         </div>
       </form>

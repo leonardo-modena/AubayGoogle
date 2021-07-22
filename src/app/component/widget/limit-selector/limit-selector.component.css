@@ -1,0 +1,7 @@
+.btn {
+  border: 1px solid #dee2e6;
+  border-radius: 0;
+  box-shadow: none !important;
+  color: var(--secondary-salmon);
+  touch-action: none;
+}

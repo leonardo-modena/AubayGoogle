@@ -40,7 +40,7 @@ export class PaginationComponent implements OnInit {
         this.first = links['first'];
         // @ts-ignore
         this.last = links['last'];
-        
+
         let numberOfPage = this.last.substring(this.first.length - 1, this.first.length);
         this.numberOfPage(numberOfPage);
 
@@ -66,7 +66,7 @@ export class PaginationComponent implements OnInit {
   }
 
   numberOfPage(pageNumber: string) {
-    for (let i = 0; i < +pageNumber; i++) {
+    for (let i = 0; i <= +pageNumber; i++) {
       this.paginationLength[i] = i + 1;
     }
   }
