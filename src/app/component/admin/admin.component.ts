@@ -17,15 +17,24 @@ export class AdminComponent implements OnInit, OnDestroy {
   loggedUser!: AuthUser | null;
   username: string | undefined
 
+  error!: string; 
+  errorTim!: any;
+
   newResearch: boolean = false;
 
   constructor(private authService: AuthService, private eventService: EventService) { }
 
   ngOnInit(): void {
-    this.authService.user.subscribe((actualUser: AuthUser | null) => {
+    clearTimeout(this.errorTim)
+    this.authService.user.subscribe(
+      (actualUser: AuthUser | null) => {
       this.loggedUser = actualUser
       this.username = actualUser?.username
-    })
+    },
+      (err) => {
+        this.eventService.emitError(err);
+      }
+    )
 
     this.eventServiceSubscription = this.eventService.newResearch.subscribe(
       () => {
@@ -38,10 +47,23 @@ export class AdminComponent implements OnInit, OnDestroy {
         this.newResearch = false;
       }
     );
+
+    this.eventServiceSubscription = this.eventService.newError.subscribe(
+      (newError) => {
+        this.error = newError;
+        this.errorTimeout();
+      }
+    )
   }
 
   onNewResearch(){
     this.newResearch = !this.newResearch;
+  }
+
+  errorTimeout(){
+    this.errorTim = setTimeout(() => {
+      this.error = '';
+    }, 6000);
   }
 
   ngOnDestroy(): void{

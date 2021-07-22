@@ -40,9 +40,14 @@ export class ListEditorComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.researchService
       .getAllResearch()
-      .subscribe((allResearch: Research[]) => {
+      .subscribe(
+        (allResearch: Research[]) => {
         this.researchList = allResearch;
-      });
+      },
+        (err) => {
+          this.eventService.emitError(err);
+        }
+      );
 
     this.eventServiceSubscription = this.eventService.newResearch.subscribe(
       (researchLog: string) => {

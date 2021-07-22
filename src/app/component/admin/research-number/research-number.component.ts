@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from 'src/app/service/event.service';
 import { ResearchConnectorService } from 'src/app/service/research-connector.service';
 
 @Component({
@@ -10,12 +11,17 @@ export class ResearchNumberComponent implements OnInit {
 
   numberoOfResearch!: number;
 
-  constructor(private researchService: ResearchConnectorService) { }
+  constructor(private researchService: ResearchConnectorService, private eventService: EventService) { }
 
   ngOnInit(): void {
-    this.researchService.getAllResearch().subscribe( (allResearch) => {
+    this.researchService.getAllResearch().subscribe( 
+      (allResearch) => {
       this.numberoOfResearch = allResearch.length;
-    })
+    },
+      (err) => {
+        this.eventService.emitError(err)
+      }
+    )
   }
 
 }

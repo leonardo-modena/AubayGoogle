@@ -17,6 +17,7 @@ export class EventService {
 
   newLink = new  BehaviorSubject<string>('');
 
+  newError = new Subject<string>();
 
   constructor() { }
 
@@ -38,6 +39,10 @@ export class EventService {
 
   emitLink(link: string): void{
     this.newLink.next(link);
+  }
+
+  emitError(error: string): void {
+    this.newError.next(error)
   }
 
   

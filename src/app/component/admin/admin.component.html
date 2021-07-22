@@ -1,6 +1,9 @@
 <div class="container mt-4" *ngIf="!!loggedUser">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-12 mb-3">
+            <app-error [error]='error' *ngIf="error"></app-error>
+        </div>
+        <div class="col-sm-3 ">
             <div class="card shadow-left-light">
                 <div class="card-body  flex-center">
                     <div class="btn btn-primary add-btn pointer" (click)=onNewResearch()><i class="bi bi-plus-lg add-icon"></i>AGGIUNGI RICERCA</div>
