@@ -42,12 +42,19 @@ export class LoginComponent implements OnInit, OnDestroy {
           err => {
             this.loading = false
             this.errorMessage = err;
+            this.onError()
           }
         );
       } else{
         this.loading = false
       }
     }, 800);
+  }
+
+  onError(): void{
+    setTimeout(() => {
+      this.errorMessage = null; 
+    }, 6000);
   }
 
   ngOnDestroy(): void {

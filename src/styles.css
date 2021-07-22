@@ -15,6 +15,7 @@
     --primary-gray: #d6e3e1;
     --secondary-salmon: #FDB599;
     --secondary-salmon-disabled: #b88976a2;
+    --error-color: #d18e8e7a !important ; 
 }
 
 body{

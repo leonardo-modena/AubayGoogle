@@ -51,6 +51,9 @@ export class ListEditorComponent implements OnInit, OnDestroy {
           .getAllResearch()
           .subscribe((allResearch: Research[]) => {
             this.researchList = allResearch;
+            this.unCheckElement();
+            this.researchSelectedArray = [];
+            this.checked = false;
           });
       }
     );
@@ -124,8 +127,8 @@ export class ListEditorComponent implements OnInit, OnDestroy {
     }
     if (this.researchSelectedArray.length > 0) {
       this.checked = true;
-    } else if (this.researchSelectedArray.length === 0){
-      this.checked = false
+    } else if (this.researchSelectedArray.length === 0) {
+      this.checked = false;
     }
   }
 
@@ -165,8 +168,8 @@ export class ListEditorComponent implements OnInit, OnDestroy {
     });
   }
 
-  clickMenu(): void{
-    this.researchMenu = !this.researchMenu
+  clickMenu(): void {
+    this.researchMenu = !this.researchMenu;
   }
 
   ngOnDestroy(): void {
