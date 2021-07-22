@@ -138,3 +138,27 @@ label{
 .card-body{
     padding: 18px 18px;
 }
+
+
+.menu-card {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    padding: 11px 18px;
+    line-height: 25px;
+    z-index: 9
+  }
+  
+  .menu-card a{
+    text-decoration: none;
+    color: var(--primary-black);
+    letter-spacing: 1px;
+    transform: scale(1) translateX(-4px);
+    transition: all 0.4s ease;
+  }
+  
+  .menu-card a:hover{
+      color: var(--primary-black);
+    transform: scale(1.05) translateX(0px);
+    
+  }

@@ -34,3 +34,17 @@ i{
 .icon-margin {
     margin-right: 1rem
 }
+
+#menu-research-panel{
+    position: absolute;
+    width: 9rem;
+    right:5px;
+    text-align: center;
+    z-index: 5 !important;
+}
+
+.menu-card a{
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+}

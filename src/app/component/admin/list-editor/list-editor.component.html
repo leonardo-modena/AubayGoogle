@@ -5,7 +5,12 @@
           <h4>| Pannello Ricerche:</h4>
         </div>
         <div class="col-sm-6 col-6">
-            <a type="button" class="option-button flex-end">...</a>
+            <a type="button" class="option-button flex-end" (click)="clickMenu()">...</a>
+            <div *ngIf="researchMenu" class="card card-absolute shadow-left-light" id="menu-research-panel">
+                <div class="card-body menu-card">
+                  <a class="pointer" (click)="checkUncheckAll(!checked)"><i *ngIf="!checked" class="bi bi-check-circle"></i><i *ngIf="checked" class="bi bi-check-circle-fill"></i><span class="ms-1">{{checked ? 'Deseleziona' : 'Seleziona Tutti'}}</span></a>
+                </div>
+            </div>
         </div>
         <div class="col-sm-12 mb-2 delete-button">
             <i class="bi bi-trash icon-margin" (click)="onDelete()" [ngClass]="{'icon-disabled': this.researchSelectedArray.length < 1}"></i>
@@ -13,7 +18,7 @@
         </div>
       </div>
       <div class="list-group all-research-list" #cl>
-        <button type="button" class="list-group-item list-group-item-action" *ngFor="let research of researchList">
+        <button type="button" class="list-group-item list-group-item-action" *ngFor="let research of researchList; let i = index">
           <form>
             <div class="row">              
               <p class="col-sm-10">{{research.id}} - {{research.titolo}}</p>

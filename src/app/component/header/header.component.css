@@ -9,6 +9,7 @@
 .user-image {
   border-radius: 20px;
 }
+
 .card-absolute {
   position: absolute;
   top: 112%;
@@ -16,16 +17,3 @@
   z-index: 1;
 }
 
-.menu-card {
-  display: flex;
-  flex-direction: column;
-  font-size: 12px;
-  padding: 11px 18px;
-  line-height: 25px;
-}
-
-.menu-card a{
-  text-decoration: none;
-  color: var(--primary-black);
-  letter-spacing: 1px;
-}
