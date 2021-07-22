@@ -14,7 +14,7 @@
     --primary-white: #FFFFFF;
     --primary-gray: #d6e3e1;
     --secondary-salmon: #FDB599;
-    --secondary-salmon-disabled: #fcbaa0a2;
+    --secondary-salmon-disabled: #b88976a2;
 }
 
 body{
@@ -90,9 +90,12 @@ h3{
     border-radius: none !important;
 }
 
+.btn.disabled{
+    background-color: var(--secondary-salmon-disabled) !important;
+}
+
 .btn-primary.disabled .btn-primary:disabled{
     border: none;
-    background-color: var(--secondary-salmon-disabled) !important;
     border-radius: none !important;
 }
 

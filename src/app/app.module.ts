@@ -20,7 +20,7 @@ import { ErrorComponent } from './component/error/error.component';
 import { ErrorInterceptor } from './interceptor/error.interceptor';
 import { PaginationComponent } from './component/pagination/pagination.component';
 import { ListEditorComponent } from './component/admin/list-editor/list-editor.component';
-import { UpdateResearchComponent } from './component/admin/update-research/update-research.component';
+import { ManageResearchComponent } from './component/admin/manage-research/manage-research.component';
 
 
 
@@ -37,7 +37,7 @@ import { UpdateResearchComponent } from './component/admin/update-research/updat
     ErrorComponent,
     PaginationComponent,
     ListEditorComponent,
-    UpdateResearchComponent,
+    ManageResearchComponent,
   ],
   imports: [
     BrowserModule,

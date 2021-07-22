@@ -3,7 +3,7 @@
         <div class="col-sm-3">
             <div class="card shadow-left-light">
                 <div class="card-body  flex-center">
-                    <div class="btn btn-primary add-btn"><i class="bi bi-plus-lg add-icon"></i>AGGIUNGI RICERCA</div>
+                    <div class="btn btn-primary add-btn pointer" (click)=onNewResearch()><i class="bi bi-plus-lg add-icon"></i>AGGIUNGI RICERCA</div>
                 </div>
             </div>
 
@@ -21,3 +21,5 @@
         </div>
     </div>
 </div>
+
+<app-manage-research *ngIf="newResearch"></app-manage-research>
