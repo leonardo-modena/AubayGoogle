@@ -18,6 +18,7 @@ export class SearchBarComponent implements OnInit {
   pageLimit!: number;
 
 
+  loading: boolean = false;
   hiddenPagination = true;
 
   constructor(private researchService: ResearchConnectorService, private eventService: EventService, private widgetService: WidgetService) {
@@ -29,12 +30,17 @@ export class SearchBarComponent implements OnInit {
     });
 
     this.eventService.newLink
-      .subscribe((newLink) => {
-        if (newLink) {
+    .subscribe((newLink) => {
+      if (newLink) {
           this.researchService.getResearchByUrl(newLink)
-            .subscribe(resData => {
+            .subscribe(
+              (resData) => {
               this.research = resData;
-            })
+            },
+            err =>{
+              console.log(err)
+            }
+            )
         }
       });
 
@@ -48,11 +54,20 @@ export class SearchBarComponent implements OnInit {
 
   onSearch() {
     if (this.inputSearch.valid) {
-      this.researchService.getResearchByKey(this.inputSearch.controls.searchBar.value, ''+this.pageLimit)
-        .subscribe((res) => {
-          this.research = res;
-          this.hiddenPagination = false;
-        });
+      this.loading = true;
+      setTimeout(() => {
+        this.researchService.getResearchByKey(this.inputSearch.controls.searchBar.value, ''+this.pageLimit)
+          .subscribe(
+            (res) => {
+              this.loading = false;
+            this.research = res;
+            this.hiddenPagination = false;
+          },
+            (err) => {
+              console.log(err)
+            }
+          );
+      }, 800);
     } else {
       alert('inserire parola');
     }

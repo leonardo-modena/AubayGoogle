@@ -1,7 +1,7 @@
 <form [formGroup]="limitForm">
-    <select class="btn"  formControlName="selectLimit" (click)="onChangeLimit()" >
+    <select class="btn"  formControlName="selectLimit"  (change)="onChangeLimit()">
       <option value="5">5</option>
-      <option  value="10">10</option>
-      <option  value="15">15</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
     </select>
   </form>

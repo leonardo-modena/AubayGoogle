@@ -16,12 +16,13 @@
           </div>
         </div>
       </form>
-      <app-research-item [onResearch]="research"></app-research-item>
+      <app-loader *ngIf="loading"></app-loader>
+      <app-research-item *ngIf="!loading" [onResearch]="research"></app-research-item>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <app-pagination *ngIf="!this.hiddenPagination"></app-pagination>
+      <app-pagination *ngIf="!this.hiddenPagination && !loading"></app-pagination>
     </div>
   </div>
 </div>
