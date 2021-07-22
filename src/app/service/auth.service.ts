@@ -14,7 +14,7 @@ export class AuthService {
   
 
   constructor(private httpService: HttpClient) {
-    this.refreshTokenInterval = null;
+    clearInterval(this.refreshTokenInterval)
   }
 
   login(username: string, password: string): Observable<void> {
@@ -42,7 +42,6 @@ export class AuthService {
   }
 
   refreshLogin(): void {
-    clearInterval(this.refreshTokenInterval)
 
     this.user.subscribe((user) => {
       if (user) {
@@ -51,8 +50,8 @@ export class AuthService {
             (user.tokenExpireIn - Date.now()),
             user.refreshToken
           );
-          console.log('started');
         } else {
+          console.log('started');
           this.logout();
         }
       }
@@ -60,6 +59,7 @@ export class AuthService {
   }
 
   IntervalRefresh(interval: number, refreshToken: string): void {
+
     this.refreshTokenInterval = setInterval(() => {
       console.log("chiamato")
       this.httpService
@@ -79,12 +79,13 @@ export class AuthService {
 
   autoLogin(): void {
     clearInterval(this.refreshTokenInterval)
-    let UserSaved = localStorage.getItem('user');
+    let UserSavedString = localStorage.getItem('user');
 
-    if (!UserSaved) {
+    if (!UserSavedString) {
       return;
     }
-    this.user.next(JSON.parse(UserSaved));
-    this.refreshLogin();
+    let UserSaved: AuthUser = JSON.parse(UserSavedString);
+    this.user.next(UserSaved);
+    this.IntervalRefresh((UserSaved.tokenExpireIn - Date.now()), UserSaved.refreshToken);
   }
 }
