@@ -8,7 +8,7 @@
               <span aria-hidden="true">&laquo;</span>
             </a>
           </li>
-          <li class="page-item"
+          <li class="page-item pointer"
               *ngFor="let page of paginationLength"
               (click)="onPageChanged(page)"
               [ngClass]="{active: currentPage === page}">
