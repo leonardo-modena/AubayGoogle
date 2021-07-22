@@ -17,10 +17,11 @@ import { ResearchConnectorService } from 'src/app/service/research-connector.ser
 })
 export class ListEditorComponent implements OnInit, OnDestroy {
   @ViewChild('cl') checkList: any;
+  
+  eventServiceSubscription: Subscription[] = [];
 
   buttonList: any;
 
-  eventServiceSubscription!: Subscription;
 
   researchList!: Research[];
 
@@ -49,7 +50,7 @@ export class ListEditorComponent implements OnInit, OnDestroy {
         }
       );
 
-    this.eventServiceSubscription = this.eventService.newResearch.subscribe(
+    this.eventServiceSubscription.push(this.eventService.newResearch.subscribe(
       (researchLog: string) => {
         console.log(researchLog);
         this.researchService
@@ -61,9 +62,9 @@ export class ListEditorComponent implements OnInit, OnDestroy {
             this.checked = false;
           });
       }
-    );
+    ));
 
-    this.eventServiceSubscription = this.eventService.deleteResearch.subscribe(
+    this.eventServiceSubscription.push(this.eventService.deleteResearch.subscribe(
       (researchLog: string) => {
         console.log(researchLog);
         this.researchService
@@ -72,9 +73,9 @@ export class ListEditorComponent implements OnInit, OnDestroy {
             this.researchList = allResearch;
           });
       }
-    );
+    ));
 
-    this.eventServiceSubscription = this.eventService.updateResearch.subscribe(
+    this.eventServiceSubscription.push(this.eventService.updateResearch.subscribe(
       (researchLog: string) => {
         console.log(researchLog);
         this.researchService
@@ -83,13 +84,13 @@ export class ListEditorComponent implements OnInit, OnDestroy {
             this.researchList = allResearch;
           });
       }
-    );
+    ));
 
-    this.eventServiceSubscription = this.eventService.endUpdate.subscribe(
+    this.eventServiceSubscription.push(this.eventService.endUpdate.subscribe(
       (value) => {
         this.researchToUpdate = value;
       }
-    );
+    ));
   }
 
   onDelete(): void {
@@ -178,6 +179,8 @@ export class ListEditorComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.eventServiceSubscription.unsubscribe();
+    if (this.eventServiceSubscription.length > 0) {
+      this.eventServiceSubscription.forEach( sub => sub.unsubscribe())
+    }
   }
 }

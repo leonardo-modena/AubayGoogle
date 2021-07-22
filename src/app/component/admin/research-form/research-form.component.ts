@@ -60,6 +60,7 @@ export class ResearchFormComponent implements OnInit {
         (res) => {
           this.loading = false;
           this.eventService.emitResearch(actualResearch);
+          
         },
         (err) => {
           this.loading = false;
@@ -70,6 +71,7 @@ export class ResearchFormComponent implements OnInit {
       this.researchService.updateResearch(this.updateResearch.id, actualResearch)?.subscribe( 
         (res) => {
           this.eventService.emitUpdateResearch(res);
+          this.eventService.emitEndOfUpdate();
         },
         (err) => {
           console.log(err)

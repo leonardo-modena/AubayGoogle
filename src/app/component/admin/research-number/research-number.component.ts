@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EventService } from 'src/app/service/event.service';
 import { ResearchConnectorService } from 'src/app/service/research-connector.service';
 

@@ -12,7 +12,7 @@ import { EventService } from 'src/app/service/event.service';
 export class AdminComponent implements OnInit, OnDestroy {
 
   authServiceSubscription!: Subscription;
-  eventServiceSubscription!: Subscription;
+  eventServiceSubscription: Subscription[] = [];
 
   loggedUser!: AuthUser | null;
   username: string | undefined
@@ -37,40 +37,40 @@ export class AdminComponent implements OnInit, OnDestroy {
       }
     )
 
-    this.eventServiceSubscription = this.eventService.newResearch.subscribe(
+    this.eventServiceSubscription.push(this.eventService.newResearch.subscribe(
       ( log ) => {
         this.info = log
         this.newResearch = false;
         this.timeoutLog();
       }
-    );
+    ));
 
-    this.eventServiceSubscription = this.eventService.deleteResearch.subscribe(
+    this.eventServiceSubscription.push(this.eventService.deleteResearch.subscribe(
       ( log ) => {
         this.info = log
         this.timeoutLog();
       }
-    );
+    ));
 
-    this.eventServiceSubscription = this.eventService.updateResearch.subscribe(
+    this.eventServiceSubscription.push(this.eventService.updateResearch.subscribe(
       ( log ) => {
         this.info = log
         this.timeoutLog();
       }
-    );
+    ));
 
-    this.eventServiceSubscription = this.eventService.endUpdate.subscribe(
+    this.eventServiceSubscription.push(this.eventService.endUpdate.subscribe(
       (value) => {
         this.newResearch = false;
       }
-    );
+    ));
 
-    this.eventServiceSubscription = this.eventService.newError.subscribe(
+    this.eventServiceSubscription.push(this.eventService.newError.subscribe(
       (newError) => {
         this.error = newError;
         this.timeoutLog();
       }
-    )
+    ));
   }
 
   onNewResearch(){
@@ -87,6 +87,9 @@ export class AdminComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void{
     if (this.authServiceSubscription)
       this.authServiceSubscription.unsubscribe()
+    
+    if (this.eventServiceSubscription.length > 0)
+      this.eventServiceSubscription.forEach( sub => sub.unsubscribe())
   }
 
 }
