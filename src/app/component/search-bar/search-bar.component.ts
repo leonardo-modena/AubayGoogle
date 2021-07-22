@@ -27,12 +27,10 @@ export class SearchBarComponent implements OnInit {
         if (newLink) {
           this.researchService.getResearchByUrl(newLink)
             .subscribe(resData => {
-              console.log(newLink);
               this.research = resData;
             })
         }
-        // console.log(newLink);
-      })
+      });
   }
 
   onSearch() {

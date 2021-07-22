@@ -1,5 +1,6 @@
 .page-link {
   border-radius: 0 !important;
+  color: var(--secondary-salmon);
 }
 
 .page-item.active .page-link {

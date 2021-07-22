@@ -4,9 +4,9 @@
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
           <li class="page-item" [ngClass]="{disabled: currentPage === 1}">
-            <a class="page-link" href="#" aria-label="Previous" (click)="onPageChanged('first')">
+            <a class="page-link" aria-label="Previous" (click)="onPageChanged('first')">
               <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">First</span>
+<!--              <span class="sr-only">First</span>-->
             </a>
           </li>
           <li class="page-item"
@@ -16,8 +16,8 @@
             <a class="page-link" href="#">{{ page }}</a>
           </li>
           <li class="page-item" [ngClass]="{disabled: currentPage === paginationLength.length}">
-            <a class="page-link" href="#" aria-label="Next" (click)="onPageChanged('last')">
-              <span class="sr-only">Last</span>
+            <a class="page-link" aria-label="Next" (click)="onPageChanged('last')">
+<!--              <span class="sr-only">Last</span>-->
               <span aria-hidden="true">&raquo;</span>
             </a>
           </li>
@@ -26,8 +26,8 @@
     </div>
     <div class="col col-lg-2">
       <form class="justify-content-end">
-        <label>items per page: </label>
-        <select>
+<!--        <label>items per page: </label>-->
+        <select class="btn">
           <option>5</option>
           <option>10</option>
           <option>15</option>

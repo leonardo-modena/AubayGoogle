@@ -23,7 +23,7 @@ export class ResearchConnectorService {
   getResearchByKey(chiave: string, pagina: string): Observable<Research[]> {
     return this.httpService
       .get<Research[]>(
-        `http://localhost:3000/ricerca?q=${chiave}&_limit=1&_page=${pagina}`,
+        `http://localhost:3000/ricerca?q=${chiave}&_limit=5&_page=${pagina}`,
         {observe: 'response'}
       )
       .pipe(
