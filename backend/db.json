@@ -22,18 +22,194 @@
       "url": "https://www.typescriptlang.org"
     },
     {
-      "titolo": "test 1",
-      "descrizione": "desc 1",
-      "chiavi": "descrizione test",
-      "url": "www.test1.com",
+      "titolo": "React – Una libreria JavaScript per creare interfacce utente",
+      "descrizione": "React · Dichiarativo. React rende la creazione di UI interattive facile e indolore. Progetta interfacce per ogni stato della tua applicazione. · Componenti. Crea ...",
+      "chiavi": "react, language",
+      "url": "https://it.reactjs.org",
       "id": 4
     },
     {
-      "titolo": "test2",
-      "descrizione": "deesc 2",
-      "chiavi": "descrizione test",
-      "url": "www.test2.com",
+      "titolo": "Java Documentation - Get Started - Oracle Help Center",
+      "descrizione": "Use the rich set of code samples, tutorials, developer guides, API documentation, and more to quickly develop your prototype and scale it up to a real world ...",
+      "chiavi": "java, language, backend",
+      "url": "https://docs.oracle.com/en/java/",
       "id": 5
+    },
+    {
+      "titolo": "Getting Started | Building an Application with Spring Boot",
+      "descrizione": "Spring Boot offers a fast way to build applications. It looks at your classpath and at the beans you have configured, makes reasonable assumptions about what ...",
+      "chiavi": "spring boot, framework",
+      "url": "https://spring.io/guides/gs/spring-boot/",
+      "id": 6
+    },
+    {
+      "titolo": "Bootstrap · The most popular HTML, CSS, and JS library in the ...",
+      "descrizione": "Build fast, responsive sites with Bootstrap ... Quickly design and customize responsive mobile-first sites with Bootstrap, the world's most popular front-end open ...",
+      "chiavi": "bootstrap, frontend, styling",
+      "url": "https://getbootstrap.com/",
+      "id": 7
+    },
+    {
+      "titolo": "Docker: Empowering App Development for Developers",
+      "descrizione": "Learn how Docker helps developers bring their ideas to life by conquering the complexity of app development.",
+      "chiavi": "docker, deployment",
+      "url": "https://www.docker.com/",
+      "id": 8
+    },
+    {
+      "titolo": "MuleSoft | Integration Platform for Connecting SaaS and ...",
+      "descrizione": "MuleSoft's Anypoint Platform™ is the world's leading integration platform for SOA, SaaS, and APIs. MuleSoft provides exceptional business agility to companies ...",
+      "chiavi": "mulesoft, inegration, API",
+      "url": "https://www.mulesoft.com/",
+      "id": 9
+    },
+    {
+      "titolo": "Microsoft Power Apps e Microsoft Power Automate",
+      "descrizione": "Microsoft Power Apps e Microsoft Power Automate. Supera le sfide aziendali con strumenti low-code per i tuoi team. Vedi piani e prezzi.",
+      "chiavi": "microsoft, power apps. power automate",
+      "url": "https://www.microsoft.com/it-it/microsoft-365/business/microsoft-powerapps",
+      "id": 10
+    },
+    {
+      "titolo": "Welcome to Python.org",
+      "descrizione": "The official home of the Python Programming Language.",
+      "chiavi": "python, language, programming",
+      "url": "https://www.python.org/",
+      "id": 11
+    },
+    {
+      "titolo": "Google",
+      "descrizione": "Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking ...",
+      "chiavi": "google, homepage",
+      "url": "https://www.google.it/",
+      "id": 12
+    },
+    {
+      "titolo": "Cos'è Kubernetes? | Kubernetes",
+      "descrizione": "Kubernetes è una piattaforma portatile, estensibile e open-source per la gestione di carichi di lavoro e servizi containerizzati, in grado di facilitare sia la ...",
+      "chiavi": "kubernetes, container",
+      "url": "https://kubernetes.io/it/docs/concepts/overview/what-is-kubernetes/",
+      "id": 13
+    },
+    {
+      "titolo": "Atlassian | Strumenti di sviluppo software e collaborazione",
+      "descrizione": "Atlassian è un'azienda che si occupa dello sviluppo di strumenti come Jira e Trello, utilizzati da migliaia di team in tutto il mondo. Diamo il massimo per ...",
+      "chiavi": "atlassian, jira, software",
+      "url": "https://www.atlassian.com/it",
+      "id": 14
+    },
+    {
+      "titolo": "Trello",
+      "descrizione": "Trello aiuta i gruppi a far avanzare il lavoro. Collabora, gestisci progetti e raggiungi nuovi picchi di produttività. Dai grattacieli all'ufficio in casa, ...",
+      "chiavi": "trello, software gestionale",
+      "url": "https://trello.com/it",
+      "id": 15
+    },
+    {
+      "titolo": "Mentimeter: Interactive presentation software",
+      "descrizione": "Interact with your audience using real-time voting. No installations or downloads required - and it's free!",
+      "chiavi": "mentimeter, interactive, presentation",
+      "url": "https://www.mentimeter.com/",
+      "id": 16
+    },
+    {
+      "titolo": "Git",
+      "descrizione": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
+      "chiavi": "git, versioning, software",
+      "url": "https://git-scm.com/",
+      "id": 17
+    },
+    {
+      "titolo": "Visual Studio Code - Code Editing. Redefined",
+      "descrizione": "Visual Studio Code is a code editor redefined and optimized for building and debugging modern web and cloud applications. Visual Studio Code is free and ...",
+      "chiavi": "visual studio code, software, programming",
+      "url": "https://code.visualstudio.com/",
+      "id": 18
+    },
+    {
+      "titolo": "LinkedIn Italia: accedi o iscriviti",
+      "descrizione": "Oltre 750 milioni di utenti | Gestisci la tua identità professionale. Crea la tua rete professionale e interagisci con essa. Accedi al sapere, a ...",
+      "chiavi": "linkedin, social, network, work",
+      "url": "https://it.linkedin.com/",
+      "id": 19
+    },
+    {
+      "titolo": "Facebook: accedi o iscriviti",
+      "descrizione": "Accedi a Facebook per iniziare a condividere contenuti e connetterti con i tuoi amici, la famiglia e le persone che conosci.",
+      "chiavi": "facebook, social network",
+      "url": "https://it-it.facebook.com/",
+      "id": 20
+    },
+    {
+      "titolo": "Ionic Framework: Cross-Platform Mobile App Development",
+      "descrizione": "Ionic Framework's app development platform builds amazing cross-platform mobile, web, and desktop apps all with one shared code base and open-web standards.\n",
+      "chiavi": "ionic, framework mobile",
+      "url": "https://ionicframework.com/",
+      "id": 21
+    },
+    {
+      "titolo": "Download Android Studio and SDK tools | Android Developers",
+      "descrizione": "Android Studio provides the fastest tools for building apps on every type of Android device. Download Not Available. Your current device is not supported. See ...",
+      "chiavi": "android stusio, developer, android, mobile",
+      "url": "https://developer.android.com/studio",
+      "id": 22
+    },
+    {
+      "titolo": "PostgreSQL: The world's most advanced open source database",
+      "descrizione": "PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development that has earned it a strong reputation for ...",
+      "chiavi": "postgresql, database, open source",
+      "url": "https://www.postgresql.org/",
+      "id": 23
+    },
+    {
+      "titolo": "SQL Developer | Oracle Italia",
+      "descrizione": "Oracle SQL Developer is a free, integrated development environment that simplifies the development and management of Oracle Database in both traditional and ...\n",
+      "chiavi": "oracle, sql, developer, database",
+      "url": "https://www.oracle.com/it/database/technologies/appdev/sqldeveloper-landing.html",
+      "id": 24
+    },
+    {
+      "titolo": "MongoDB: The most popular database for modern apps",
+      "descrizione": "We're the creators of MongoDB, the most popular database for modern apps, and MongoDB Atlas, the global cloud database on AWS, Azure, and GCP.",
+      "chiavi": "mongodb, database, nosql",
+      "url": "https://www.mongodb.com/",
+      "id": 25
+    },
+    {
+      "titolo": "Oracle VM VirtualBox",
+      "descrizione": "VirtualBox is a powerful x86 and AMD64/Intel64 virtualization product for enterprise as well as home use. Not only is VirtualBox an extremely feature rich, ...",
+      "chiavi": "oracle, virtualbox, vm",
+      "url": "https://www.virtualbox.org/",
+      "id": 26
+    },
+    {
+      "titolo": "Servizi di cloud computing - Amazon Web Services (AWS)",
+      "descrizione": "AWS offre servizi di elaborazione, storage di database, distribuzione di contenuti e altre funzionalità, ideali per aiutarti a creare applicazioni ...",
+      "chiavi": "aws, cloud, amazon",
+      "url": "https://aws.amazon.com/it/",
+      "id": 27
+    },
+    {
+      "titolo": "Homepage | Ubuntu Italia",
+      "descrizione": "Ubuntu-it è la comunità italiana di Ubuntu. È organizzata in diversi gruppi, coordinati dal Consiglio della comunità, ciascuno dedicato ad un obiettivo ...",
+      "chiavi": "ubuntu, linux, operating system",
+      "url": "https://www.ubuntu-it.org/",
+      "id": 28
+    },
+    {
+      "titolo": "jQuery",
+      "descrizione": "What is jQuery? ... jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, ...",
+      "chiavi": "jquery, library, javascript",
+      "url": "https://jquery.com/",
+      "id": 29
+    },
+    {
+      "titolo": "PHP: Hypertext Preprocessor",
+      "descrizione": "PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from ...",
+      "chiavi": "php, language, scripting",
+      "url": "https://www.php.net/",
+      "id": 30
     }
+
   ]
 }

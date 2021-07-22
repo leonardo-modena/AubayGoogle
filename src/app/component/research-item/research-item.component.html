@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row mt-5">
     <ul class="list-group">
-      <li class="list-group-item" style="border: none"
+      <li class="list-group-item card shadow mb-3" style="border: none"
           *ngFor="let research of onResearch">
-        <a [href]="research.url" target="_blank">{{ research.url }}</a>
-        <div>{{ research.titolo }}</div>
-        <p>{{ research.descrizione }}</p>
+<!--        <cite><a [href]="research.url" target="_blank">{{ research.url }}</a></cite>-->
+        <cite>{{ research.url }}</cite>
+        <h4><a [href]="research.url" target="_blank">{{ research.titolo }}</a></h4>
+        <div>{{ research.descrizione }}</div>
       </li>
     </ul>
   </div>
