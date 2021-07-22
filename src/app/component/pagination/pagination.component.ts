@@ -66,7 +66,7 @@ export class PaginationComponent implements OnInit {
   }
 
   numberOfPage(pageNumber: string) {
-    for (let i = 0; i <= +pageNumber; i++) {
+    for (let i = 0; i < +pageNumber; i++) {
       this.paginationLength[i] = i + 1;
     }
   }
