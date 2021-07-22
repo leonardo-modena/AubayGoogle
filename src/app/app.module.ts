@@ -22,6 +22,7 @@ import { PaginationComponent } from './component/pagination/pagination.component
 import { ListEditorComponent } from './component/admin/list-editor/list-editor.component';
 import { ManageResearchComponent } from './component/admin/manage-research/manage-research.component';
 import { ResearchNumberComponent } from './component/admin/research-number/research-number.component';
+import { LimitSelectorComponent } from './component/widget/limit-selector/limit-selector.component';
 
 
 
@@ -40,6 +41,7 @@ import { ResearchNumberComponent } from './component/admin/research-number/resea
     ListEditorComponent,
     ManageResearchComponent,
     ResearchNumberComponent,
+    LimitSelectorComponent,
   ],
   imports: [
     BrowserModule,

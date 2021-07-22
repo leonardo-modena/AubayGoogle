@@ -24,7 +24,7 @@ export class PaginationComponent implements OnInit {
     this.researchService.headerData.subscribe(res => {
       this.resetResearch();
 
-      if (res.link && res.totalCount) {
+      if (res.link) {
         this.link = res["link"].split(',');
 
         let parts = res["link"].split(',');
@@ -36,12 +36,13 @@ export class PaginationComponent implements OnInit {
           // @ts-ignore
           links[name] = url;
         });
-        let numberOfPage = res["totalCount"];
-        this.numberOfPage(numberOfPage);
         // @ts-ignore
         this.first = links['first'];
         // @ts-ignore
         this.last = links['last'];
+        
+        let numberOfPage = this.last.substring(this.first.length - 1, this.first.length);
+        this.numberOfPage(numberOfPage);
 
       }
     });
@@ -57,6 +58,7 @@ export class PaginationComponent implements OnInit {
         this.eventService.emitLink(this.last);
       }
     } else {
+      this
       const generalLink = this.first.substring(0, this.first.length - 1);
       this.eventService.emitLink(generalLink + pageIndex);
       this.currentPage = pageIndex;

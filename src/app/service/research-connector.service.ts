@@ -4,6 +4,7 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Research} from '../model/research.model';
 import {map, tap} from 'rxjs/operators';
+import { WidgetService } from './widget.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,19 +12,18 @@ import {map, tap} from 'rxjs/operators';
 export class ResearchConnectorService {
   headerData = new BehaviorSubject<{ link: string | null, totalCount: string | null }>({link: '', totalCount: ''});
 
-
   constructor(private httpService: HttpClient) {
-
+    
   }
 
   getAllResearch(): Observable<Research[]> {
     return this.httpService.get<Research[]>('http://localhost:3000/ricerca');
   }
 
-  getResearchByKey(chiave: string, pagina: string): Observable<Research[]> {
+  getResearchByKey(chiave: string, pageLimit: string): Observable<Research[]> {
     return this.httpService
       .get<Research[]>(
-        `http://localhost:3000/ricerca?q=${chiave}&_limit=5&_page=${pagina}`,
+        `http://localhost:3000/ricerca?q=${chiave}&_limit=${pageLimit}&_page=1`,
         {observe: 'response'}
       )
       .pipe(
