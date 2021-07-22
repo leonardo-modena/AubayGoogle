@@ -19,6 +19,33 @@
     --info-color: #8ed1b27a !important; 
 }
 
+
+/*
+ ===== Scrollbar CSS ===== 
+credit https://codepen.io/stephenpaton-tech/full/JjRvGmY
+*/
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #000000 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 0px;
+    border: 2px solid #ffffff;
+  }
+
+
 body{
     color: var(--primary-black) !important;
     background-color: var(--primary-white) !important;
