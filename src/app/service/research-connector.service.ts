@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Research} from '../model/research.model';
-import {map, tap} from 'rxjs/operators';
-import { WidgetService } from './widget.service';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +11,7 @@ import { WidgetService } from './widget.service';
 export class ResearchConnectorService {
   headerData = new BehaviorSubject<{ link: string | null, totalCount: string | null }>({link: '', totalCount: ''});
 
-  constructor(private httpService: HttpClient) {
-    
-  }
+  constructor(private httpService: HttpClient) { }
 
   getAllResearch(): Observable<Research[]> {
     return this.httpService.get<Research[]>('http://localhost:3000/ricerca');
